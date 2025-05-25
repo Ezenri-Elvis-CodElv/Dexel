@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+.custom-gradient-animate {
+  background-size: 200% 100%;
+  background-position: left;
+  transition: background-position 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.custom-gradient-animate:hover {
+  background-position: right;
+  
+}
+
+.rotate-360 {
+  transition: transform 0.5s;
+}
+.rotate-360:hover {
+  transform: rotate(360deg);
+
+}
+
+@keyframes moveY {
+  0% { transform: translateY(-10%); }
+  100% { transform: translateY(110%); }
+}
+@keyframes moveX {
+  0% { transform: translateX(-10%); }
+  100% { transform: translateX(110%); }
+}
+.animate-moveY {
+  animation: moveY linear infinite;
+}
+.animate-moveX {
+  animation: moveX linear infinite;
+}
