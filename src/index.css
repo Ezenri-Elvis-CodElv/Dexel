@@ -32,3 +32,22 @@
 .animate-moveX {
   animation: moveX linear infinite;
 }
+
+/* Fading radial background inside icon boxes */
+.fade-box-grid > div {
+  position: relative;
+  overflow: hidden;
+}
+
+.fade-box-grid > div::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0) 70%);
+  z-index: 0;
+}
+
+.fade-box-grid > div > * {
+  position: relative;
+  z-index: 1;
+}

@@ -13,6 +13,7 @@ import Login from "./auth/Login";
 import Signup from "./auth/Signup";
 import ResetPassword from "./auth/ResetPassword";
 import ForgetPassword from "./auth/ForgetPassword";
+import Solution from "./Pages/Solution";
 
 // Define your routes
 const router = createBrowserRouter([
@@ -28,6 +29,7 @@ const router = createBrowserRouter([
       { path: "cart", element: <Cart /> },
       { path: "contact", element: <Contact /> },
       { path: "shop", element: <Shop /> },
+      { path: "solution", element: <Solution /> },
     ],
   },
   { path: "/login", element: <Login /> },
