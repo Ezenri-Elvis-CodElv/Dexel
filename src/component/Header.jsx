@@ -237,7 +237,7 @@ const Header = () => {
                 )}
               </ul>
             </div>
-            <div className="w-[25%] h-[100%] flex justify-center items-center">
+            <div className="w-[35%]  h-[100%] flex justify-end items-center">
               <ul className="flex flex-row justify-center items-center gap-7">
                 <li
                   className="cursor-pointer hover:text-[#14B8A6] text-[#0A4747] font-semibold"

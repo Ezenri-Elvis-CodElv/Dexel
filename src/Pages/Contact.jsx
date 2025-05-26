@@ -46,16 +46,18 @@ const Contact = () => {
           </p>
 
           {/* Team Image & Card */}
-          <div className="mt-8">
-            <img src="/team-placeholder.jpg" alt="Team" className="rounded-lg w-full max-w-md" />
-            <div className="mt-4 bg-white/10 p-4 rounded-md shadow-md text-white">
+          <div className="mt-8 flex flex-row gap-4 items-center justify-between">
+            <img src="/ntegrateswithyourbusiness..jpg" alt="Team" className="rounded-lg w-[30%] max-w-md" />
+            <img src="/IMG_2493.jpeg" alt="Team" className="rounded-lg w-[30%] max-w-md" />
+            <img src="/IMG_2540 copy.jpeg" alt="Team" className="rounded-lg w-[30%] max-w-md" />
+            {/* <div className="mt-4 bg-white/10 p-4 rounded-md shadow-md text-white">
               <p className="text-sm text-gray-300">Total</p>
               <h3 className="text-xl font-bold">USD $4,845</h3>
               <div className="mt-2 text-sm space-y-1">
                 <p>Bill & Taxes: <span className="text-red-400">-154.50</span></p>
                 <p>Car Energy: <span className="text-red-400">-40.50</span></p>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
 

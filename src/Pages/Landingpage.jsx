@@ -386,7 +386,7 @@ const Landingpage = () => {
             <FaCcVisa style={{ width: "70px", height: "50px", color: "#1A1F71" }} />
           </div>
         </div>
-        <div className="w-[90%] h-auto md:h-[70%] flex flex-row items-center justify-center shadow-2xl rounded-2xl mt-4"
+        <div className="w-[90%] h-auto md:h-[70%] flex flex-row items-center justify-center shadow-2xl rounded-2xl mt-4 "
           style={{
             background: "linear-gradient(90deg, #ffffff 0%, #ffffff 100%)"
           }}
