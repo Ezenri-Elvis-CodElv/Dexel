@@ -11,7 +11,7 @@ import { AiOutlineAlignRight } from "react-icons/ai";
 
 const menuItems = [
   { label: "Solution", path: "/solution" },
-  { label: "Product" },
+    { label: "Product" },
   { label: "Platform", path: "/platform" },
   { label: "About Us", path: "/aboutus" },
   { label: "Resources", path: "/resources" },
@@ -310,9 +310,7 @@ const Header = () => {
                 <li
                   key={item.label}
                   className={`cursor-pointer font-semibold text-[18px] ${
-                    active === item.label
-                      ? "text-[#0A4747]"
-                      : "text-[#64748B]"
+                    active === item.label ? "text-[#0A4747]" : "text-[#64748B]"
                   } hover:text-[#14B8A6] py-2`}
                   onClick={() => {
                     setActive(item.label);

@@ -8,7 +8,7 @@ import Shop from "./Pages/Shop";
 import Landingpage from "./Pages/Landingpage";
 import Contact from "./Pages/Contact";
 import AboutUs from "./Pages/AboutUs";
-import PlatForm from "./Pages/Landingpage";
+import PlatForm from "./Pages/PlatForm";
 import Login from "./auth/Login";
 import Signup from "./auth/Signup";
 import ResetPassword from "./auth/ResetPassword";
