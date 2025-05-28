@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaUser, FaEnvelope, FaGlobe, FaLock, FaRegQuestionCircle } from "react-icons/fa";
 import { MdBusiness } from "react-icons/md";
 import { IoSearch } from "react-icons/io5";
+import { IoHomeOutline } from "react-icons/io5"; // Home icon
 
 // Helper to get emoji flag from country code
 function getFlagEmoji(countryName) {
@@ -224,6 +225,7 @@ const Signup = () => {
   });
 
   const [countrySearch, setCountrySearch] = useState("");
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -267,7 +269,30 @@ const Signup = () => {
   };
 
   return (
-    <div className="w-full min-h-screen flex flex-col md:flex-row items-stretch bg-[#f7fafc]">
+    <div className="w-full min-h-screen flex flex-col md:flex-row items-stretch bg-[#f7fafc] relative">
+      {/* Mobile: Logo as background */}
+      <div
+        className="md:hidden absolute inset-0 z-0"
+        style={{
+          background: "linear-gradient(135deg, #0A4747 60%, #14B8A6 100%)",
+        }}
+      >
+        <img
+          src="/logo.gif"
+          alt="Logo"
+          className="w-full h-full object-cover opacity-10"
+          style={{ position: "absolute", inset: 0 }}
+        />
+      </div>
+      {/* Home/Back Icon for mobile */}
+      <button
+        className="md:hidden fixed top-4 left-4 z-20 bg-white/80 rounded-full p-2 shadow-md"
+        onClick={() => navigate("/")}
+        aria-label="Go to Home"
+        type="button"
+      >
+        <IoHomeOutline className="text-2xl text-[#0A4747]" />
+      </button>
       {/* Left: Logo and Description (fixed, non-scrollable) */}
       <div className="hidden md:flex flex-col justify-center items-center w-1/2 fixed left-0 top-0 bottom-0 h-full z-10 overflow-hidden bg-[#0A4747]">
         {/* Background lines (SVG grid, matches landing page style) */}
@@ -290,7 +315,7 @@ const Signup = () => {
         </div>
       </div>
       {/* Right: Signup Form (scrollable, 50% width) */}
-      <div className="w-full md:w-1/2 flex flex-col justify-center items-center py-8 md:ml-[50vw] md:pl-0">
+      <div className="w-full md:w-1/2 flex flex-col justify-center items-center py-8 md:ml-[50vw] md:pl-0 relative z-10">
         <div className="w-full max-w-lg bg-white rounded-2xl shadow-xl px-4 py-8 md:px-10 md:py-10">
           <h2 className="text-2xl md:text-3xl font-bold text-[#0A4747] mb-6 text-center">
             Create your account

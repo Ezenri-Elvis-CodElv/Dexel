@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   FaMoneyCheckAlt,
   FaShieldAlt,
@@ -8,6 +8,9 @@ import {
 import { MdCallMade } from "react-icons/md";
 import SolutionCard from "../component/SolutionCard";
 import { useNavigate } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 // import crypto from '../../public/crypto.png';
 
 const solutions = [
@@ -29,12 +32,13 @@ const solutions = [
   },
 ];
 
- 
-
 const Solution = () => {
   const nav = useNavigate();
-  
-  
+
+  useEffect(() => {
+    AOS.init({ duration: 900, once: true, easing: "ease-in-out" });
+  }, []);
+
   return (
     <div
       className="w-full min-h-screen relative flex flex-col items-center justify-center"
@@ -74,17 +78,31 @@ const Solution = () => {
       </div>
 
       {/* Outer Box */}
-      <div className="relative z-10 mx-auto p-6 md:p-10 rounded-2xl border-2 border-white/30 bg-white/10 backdrop-blur-md shadow-2xl max-w-6xl w-full flex flex-col items-center">
-        <h1 className="text-4xl md:text-5xl font-semibold mb-4 text-white drop-shadow">
+      <div
+        className="relative z-10 mx-auto p-6 md:p-10 rounded-2xl border-2 border-white/30 bg-white/10 backdrop-blur-md shadow-2xl max-w-6xl w-full flex flex-col items-center"
+        data-aos="fade-up"
+      >
+        <h1
+          className="text-4xl md:text-5xl font-semibold mb-4 text-white drop-shadow"
+          data-aos="fade-up"
+        >
           Flexible integration with Gryndle
         </h1>
-        <p className="text-base md:text-lg text-white/90 mb-6 leading-relaxed text-center max-w-2xl">
+        <p
+          className="text-base md:text-lg text-white/90 mb-6 leading-relaxed text-center max-w-2xl"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
           <strong>Robust and scalable infrastructure</strong> that enables
           gateways, payment aggregators and acquirers to integrate technology in
           an agile way. With a flexible API and a clear <strong>sandbox</strong>
           , we ensure fast implementations and seamless experiences.
         </p>
-        <div className="flex justify-center mb-8">
+        <div
+          className="flex justify-center mb-8"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
           <button
             className="h-[45px] md:h-[50px] w-[170px] md:w-[150px] text-[14px] flex flex-row justify-center px-2 items-center rounded-3xl cursor-pointer font-semibold transition-all duration-300"
             style={{
@@ -131,105 +149,111 @@ const Solution = () => {
         </div>
       </div>
       <SolutionCard
-  image="/Acquiringbanksandfintechs.jpg"
-  name="Acquiring banks and fintechs"
-  description="Our technology enables banks and fintechs to modernize their payments infrastructure, improve conversion and scale without friction."
-  cardBg="linear-gradient(135deg, #31c0d6, #49b0e3, #6e8ae6, #797be0)"
-  solutions={[
-    {
-      title: "Optimized routing and processing",
-      desc: "Our platform intelligently routes transactions for maximum efficiency and reliability.",
-    },
-    {
-      title: "Advanced risk and fraud management",
-      desc: "Customization of rules based on machine learning and 24/7 monitoring.",
-    },
-    {
-      title: "Automated reconciliation",
-      desc: "Comparison of transactions with cleared funds for greater transparency.",
-    },
-    {
-      title: "Instant and programmable cashouts",
-      desc: "Optimization of liquidity and streamlining of funds availability.",
-    },
-    {
-      title: "Real-time data access",
-      desc: "Performance analysis with advanced dashboards and reporting APIs.",
-    },
-    {
-      title: "Compatibility with banking infrastructure",
-      desc: "Flexible integration with core banking systems and acquiring processors.",
-    },
-  ]}
-/>
+        image="/Acquiringbanksandfintechs.jpg"
+        name="Acquiring banks and fintechs"
+        description="Our technology enables banks and fintechs to modernize their payments infrastructure, improve conversion and scale without friction."
+        cardBg="linear-gradient(135deg, #31c0d6, #49b0e3, #6e8ae6, #797be0)"
+        solutions={[
+          {
+            title: "Optimized routing and processing",
+            desc: "Our platform intelligently routes transactions for maximum efficiency and reliability.",
+          },
+          {
+            title: "Advanced risk and fraud management",
+            desc: "Customization of rules based on machine learning and 24/7 monitoring.",
+          },
+          {
+            title: "Automated reconciliation",
+            desc: "Comparison of transactions with cleared funds for greater transparency.",
+          },
+          {
+            title: "Instant and programmable cashouts",
+            desc: "Optimization of liquidity and streamlining of funds availability.",
+          },
+          {
+            title: "Real-time data access",
+            desc: "Performance analysis with advanced dashboards and reporting APIs.",
+          },
+          {
+            title: "Compatibility with banking infrastructure",
+            desc: "Flexible integration with core banking systems and acquiring processors.",
+          },
+        ]}
+        data-aos="fade-up"
+        data-aos-delay="200"
+      />
       <SolutionCard
-  image="/Paymentgateways .jpg"
-  name="Payment gateways"
-  description="Our infrastructure empowers payment gateways with greater stability, security and payment options, optimizing conversion and operational efficiencies."
-  cardBg="#b8edff"
-  solutions={[
-    {
-      title: "Real-time payment processing",
-      desc: "Minimum latency and optimization for high transaction volumes.",
-    },
-    {
-      title: "Intelligent routing",
-      desc: "Redirecting payments to the most efficient acquirer based on success rates and costs.",
-    },
-    {
-      title: "Support for payments in a single integration",
-      desc: "Integration of multiple payment methods (cards, transfers, BNPL, wallets).",
-    },
-    {
-      title: "Tokenization and advanced security",
-      desc: "Data protection through PCI DSS standards.",
-    },
-    {
-      title: "Dashboard with real-time reporting",
-      desc: "Detailed information on payment performance, approval and rejection rates..",
-    },
-  
-  ]}
-  reverse
-/>
+        image="/Paymentgateways .jpg"
+        name="Payment gateways"
+        description="Our infrastructure empowers payment gateways with greater stability, security and payment options, optimizing conversion and operational efficiencies."
+        cardBg="#b8edff"
+        solutions={[
+          {
+            title: "Real-time payment processing",
+            desc: "Minimum latency and optimization for high transaction volumes.",
+          },
+          {
+            title: "Intelligent routing",
+            desc: "Redirecting payments to the most efficient acquirer based on success rates and costs.",
+          },
+          {
+            title: "Support for payments in a single integration",
+            desc: "Integration of multiple payment methods (cards, transfers, BNPL, wallets).",
+          },
+          {
+            title: "Tokenization and advanced security",
+            desc: "Data protection through PCI DSS standards.",
+          },
+          {
+            title: "Dashboard with real-time reporting",
+            desc: "Detailed information on payment performance, approval and rejection rates..",
+          },
+        ]}
+        reverse
+        data-aos="fade-up"
+        data-aos-delay="400"
+      />
       <SolutionCard
-  image="/PaymentAggregators.jpg"
-  name="Fintech Innovators"
-  description="Empowering fintechs to scale and innovate with modern infrastructure."
-  cardBg="#f5fafa"
-  solutions={[
-    {
-      title: "Instant Settlements",
-      desc: "Get your funds instantly with our advanced settlement engine.",
-    },
-    {
-      title: "Customizable Workflows",
-      desc: "Tailor payment flows to your business needs.",
-    },
-    {
-      title: "Scalable Infrastructure",
-      desc: "Easily scale your operations with our robust infrastructure.",
-    },
-    {
-      title: "Advanced Analytics",
-      desc: "Gain insights into your business with our powerful analytics tools.",
-    },
-    {
-      title: "Flexible API",
-      desc: "Integrate with our flexible API for seamless connectivity.",
-    },
-    {
-      title: "Dedicated Support",
-      desc: "Receive dedicated support to help you succeed.",
-    },
-  ]}
- 
-/>
+        image="/PaymentAggregators.jpg"
+        name="Fintech Innovators"
+        description="Empowering fintechs to scale and innovate with modern infrastructure."
+        cardBg="#f5fafa"
+        solutions={[
+          {
+            title: "Instant Settlements",
+            desc: "Get your funds instantly with our advanced settlement engine.",
+          },
+          {
+            title: "Customizable Workflows",
+            desc: "Tailor payment flows to your business needs.",
+          },
+          {
+            title: "Scalable Infrastructure",
+            desc: "Easily scale your operations with our robust infrastructure.",
+          },
+          {
+            title: "Advanced Analytics",
+            desc: "Gain insights into your business with our powerful analytics tools.",
+          },
+          {
+            title: "Flexible API",
+            desc: "Integrate with our flexible API for seamless connectivity.",
+          },
+          {
+            title: "Dedicated Support",
+            desc: "Receive dedicated support to help you succeed.",
+          },
+        ]}
+        data-aos="fade-up"
+        data-aos-delay="600"
+      />
       <div
         className="w-[90%] h-auto md:h-[70%] flex flex-row items-center justify-center shadow-2xl pl-5 md:pl-0 rounded-2xl mt-4 mb-4"
         style={{
           background: "linear-gradient(90deg, #ffffff 0%, #ffffff 100%)",
         }}
+        data-aos="fade-up"
+        data-aos-delay="300"
       >
         <div className="w-[50%] h-full flex flex-col items-center justify-center px-2 md:pl-6 gap-4 py-8 md:py-10">
           <h1 className="text-2xl md:text-[50px] font-[400] text-[#0A4747] leading-tight text-start">
@@ -304,6 +328,8 @@ const Solution = () => {
             src="/Footer.gif"
             alt=""
             className="w-full h-full rounded-2xl object-contain"
+            data-aos="zoom-in-up"
+            data-aos-delay="400"
           />
         </div>
       </div>

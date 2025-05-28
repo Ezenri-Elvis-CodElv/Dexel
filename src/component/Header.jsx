@@ -15,7 +15,7 @@ const menuItems = [
   { label: "Platform", path: "/platform" },
   { label: "About Us", path: "/aboutus" },
   { label: "Resources", path: "/resources" },
-  { label: "Blog", path: "/blog" },
+  { label: "FAQs", path: "/faqs" },
 ];
 
 const Header = () => {

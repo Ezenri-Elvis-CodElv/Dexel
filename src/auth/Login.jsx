@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaEnvelope, FaLock } from "react-icons/fa";
+import { IoHomeOutline } from "react-icons/io5"; // Home icon
 
 const Login = () => {
   const [form, setForm] = useState({ email: "", password: "" });
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -19,8 +21,31 @@ const Login = () => {
   const isFormValid = form.email.trim() && form.password.trim();
 
   return (
-    <div className="w-full min-h-screen flex flex-col md:flex-row items-stretch bg-[#f7fafc]">
-      {/* Left: Logo and Description (fixed, non-scrollable) */}
+    <div className="w-full min-h-screen flex flex-col md:flex-row items-stretch bg-[#f7fafc] relative">
+      {/* Mobile: Logo as background */}
+      <div
+        className="md:hidden absolute inset-0 z-0"
+        style={{
+          background: "linear-gradient(135deg, #0A4747 60%, #14B8A6 100%)",
+        }}
+      >
+        <img
+          src="/logo.gif"
+          alt="Logo"
+          className="w-full h-full object-cover opacity-10"
+          style={{ position: "absolute", inset: 0 }}
+        />
+      </div>
+      {/* Home/Back Icon for mobile */}
+      <button
+        className="md:hidden fixed top-4 left-4 z-20 bg-white/80 rounded-full p-2 shadow-md"
+        onClick={() => navigate("/")}
+        aria-label="Go to Home"
+        type="button"
+      >
+        <IoHomeOutline className="text-2xl text-[#0A4747]" />
+      </button>
+      {/* Left: Logo and Description (desktop only) */}
       <div
         className="hidden md:flex flex-col justify-center items-center w-1/2 fixed left-0 top-0 bottom-0 h-full z-10 overflow-hidden"
         style={{
@@ -69,8 +94,8 @@ const Login = () => {
           </p>
         </div>
       </div>
-      {/* Right: Login Form (scrollable, 50% width) */}
-      <div className="w-full md:w-1/2 flex flex-col justify-center items-center py-8 md:ml-[50vw] md:pl-0">
+      {/* Right: Login Form */}
+      <div className="w-full md:w-1/2 flex flex-col justify-center items-center py-8 md:ml-[50vw] md:pl-0 relative z-10">
         <div className="w-full max-w-lg bg-white rounded-2xl shadow-xl px-4 py-8 md:px-10 md:py-10">
           <h2 className="text-2xl md:text-3xl font-bold text-[#0A4747] mb-6 text-center">
             Login to your account

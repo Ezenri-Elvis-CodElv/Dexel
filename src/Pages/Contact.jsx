@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -8,6 +10,10 @@ const Contact = () => {
     message: '',
     subscribe: false,
   });
+
+  useEffect(() => {
+    AOS.init({ duration: 900, once: true, easing: "ease-in-out" });
+  }, []);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -37,9 +43,9 @@ const Contact = () => {
     >
       <div className="flex flex-col lg:flex-row justify-between mt-10">
         {/* Left: Info */}
-        <div className="lg:w-1/2 mb-10">
+        <div className="lg:w-1/2 mb-10" data-aos="fade-right">
           <p className="text-green-400 font-semibold">Contact Us</p>
-          <h2 className="text-[40px] font-[500] text-[] mt-2">Learn how Gryndle integrates with your business.</h2>
+          <h2 className="text-[40px] font-[500] mt-2">Learn how Gryndle integrates with your business.</h2>
           <p className="mt-4 text-slate-100 text-[16px]">
             Our team is here to help you with any questions or concerns you may have. Whether you're looking for more information about our services, need assistance with integration, or want to discuss your specific business needs, we're ready to assist you.
             Start on the road to borderless, frictionless payment acceptance today.
@@ -47,17 +53,9 @@ const Contact = () => {
 
           {/* Team Image & Card */}
           <div className="mt-8 flex flex-row gap-4 items-center justify-between">
-            <img src="/ntegrateswithyourbusiness..jpg" alt="Team" className="rounded-lg w-[30%] max-w-md" />
-            <img src="/IMG_2493.jpeg" alt="Team" className="rounded-lg w-[30%] max-w-md" />
-            <img src="/IMG_2540 copy.jpeg" alt="Team" className="rounded-lg w-[30%] max-w-md" />
-            {/* <div className="mt-4 bg-white/10 p-4 rounded-md shadow-md text-white">
-              <p className="text-sm text-gray-300">Total</p>
-              <h3 className="text-xl font-bold">USD $4,845</h3>
-              <div className="mt-2 text-sm space-y-1">
-                <p>Bill & Taxes: <span className="text-red-400">-154.50</span></p>
-                <p>Car Energy: <span className="text-red-400">-40.50</span></p>
-              </div>
-            </div> */}
+            <img src="/ntegrateswithyourbusiness..jpg" alt="Team" className="rounded-lg w-[30%] max-w-md" data-aos="zoom-in" data-aos-delay="100" />
+            <img src="/IMG_2493.jpeg" alt="Team" className="rounded-lg w-[30%] max-w-md" data-aos="zoom-in" data-aos-delay="200" />
+            <img src="/IMG_2540 copy.jpeg" alt="Team" className="rounded-lg w-[30%] max-w-md" data-aos="zoom-in" data-aos-delay="300" />
           </div>
         </div>
 
@@ -65,6 +63,7 @@ const Contact = () => {
         <form
           onSubmit={handleSubmit}
           className="lg:w-2/5 p-6 rounded-xl space-y-4 shadow-xl backdrop-blur-md bg-white/20 border border-white/20"
+          data-aos="fade-left"
         >
           <h3 className="text-2xl font-semibold text-[white]">Contact Us</h3>
 
@@ -75,6 +74,8 @@ const Contact = () => {
             value={formData.name}
             onChange={handleChange}
             className="w-full p-3 rounded bg-white/40 placeholder:text-[#0A4747] text-[#0A4747] border border-white/30 focus:bg-white/70 focus:outline-none"
+            data-aos="fade-up"
+            data-aos-delay="100"
           />
 
           <input
@@ -84,6 +85,8 @@ const Contact = () => {
             value={formData.email}
             onChange={handleChange}
             className="w-full p-3 rounded bg-white/40 placeholder:text-[#0A4747] text-[#0A4747] border border-white/30 focus:bg-white/70 focus:outline-none"
+            data-aos="fade-up"
+            data-aos-delay="150"
           />
 
           <input
@@ -93,6 +96,8 @@ const Contact = () => {
             value={formData.company}
             onChange={handleChange}
             className="w-full p-3 rounded bg-white/40 placeholder:text-[#0A4747] text-[#0A4747] border border-white/30 focus:bg-white/70 focus:outline-none"
+            data-aos="fade-up"
+            data-aos-delay="200"
           />
 
           <textarea
@@ -102,9 +107,11 @@ const Contact = () => {
             onChange={handleChange}
             rows={4}
             className="w-full p-3 rounded bg-white/40 placeholder:text-[#0A4747] text-[#0A4747] border border-white/30 focus:bg-white/70 focus:outline-none"
+            data-aos="fade-up"
+            data-aos-delay="250"
           ></textarea>
 
-          <label className="flex items-center space-x-2 text-sm text-[#0A4747]">
+          <label className="flex items-center space-x-2 text-sm text-[#0A4747]" data-aos="fade-up" data-aos-delay="300">
             <input
               type="checkbox"
               name="subscribe"
@@ -122,6 +129,8 @@ const Contact = () => {
               background: "linear-gradient(90deg, #0A4747 0%, #14B8A6 100%)",
               color: "#fff",
             }}
+            data-aos="fade-up"
+            data-aos-delay="350"
           >
             Send information <span className="ml-2">→</span>
           </button>
