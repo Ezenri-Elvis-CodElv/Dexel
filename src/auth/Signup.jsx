@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaUser, FaEnvelope, FaGlobe, FaLock, FaRegQuestionCircle } from "react-icons/fa";
 import { MdBusiness } from "react-icons/md";
-import { IoSearch } from "react-icons/io5";
-import { IoHomeOutline } from "react-icons/io5"; // Home icon
+import { IoSearch, IoHomeOutline } from "react-icons/io5";
+import { motion } from "framer-motion";
+import gsap from "gsap";
+import { Modal } from "antd";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
 // Helper to get emoji flag from country code
 function getFlagEmoji(countryName) {
@@ -225,7 +228,60 @@ const Signup = () => {
   });
 
   const [countrySearch, setCountrySearch] = useState("");
+  const [termsVisible, setTermsVisible] = useState(false);
+  const [privacyVisible, setPrivacyVisible] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
   const navigate = useNavigate();
+
+  // Water animation refs and state
+  const waterRef = useRef(null);
+
+  // Animate "beach water" background with GSAP
+  useEffect(() => {
+    if (!waterRef.current) return;
+    const tl = gsap.timeline({ repeat: -1, yoyo: true });
+    tl.to(waterRef.current, {
+      "--wave1": "60% 65%",
+      "--wave2": "40% 45%",
+      "--cloud-x": "60%",
+      "--cloud-y": "45%",
+      duration: 6,
+      ease: "sine.inOut",
+    })
+      .to(waterRef.current, {
+        "--wave1": "55% 55%",
+        "--wave2": "45% 55%",
+        "--cloud-x": "40%",
+        "--cloud-y": "55%",
+        duration: 6,
+        ease: "sine.inOut",
+      })
+      .to(waterRef.current, {
+        "--wave1": "60% 65%",
+        "--wave2": "40% 45%",
+        "--cloud-x": "50%",
+        "--cloud-y": "50%",
+        duration: 6,
+        ease: "sine.inOut",
+      });
+    return () => tl.kill();
+  }, []);
+
+  // Mouse move effect for water flow (optional, can be removed for pure auto-move)
+  const handleMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width;
+    const y = (e.clientY - rect.top) / rect.height;
+    if (waterRef.current) {
+      gsap.to(waterRef.current, {
+        "--cloud-x": `${x * 100}%`,
+        "--cloud-y": `${y * 100}%`,
+        duration: 1.2,
+        ease: "power2.out",
+      });
+    }
+  };
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -269,12 +325,12 @@ const Signup = () => {
   };
 
   return (
-    <div className="w-full min-h-screen flex flex-col md:flex-row items-stretch bg-[#f7fafc] relative">
+    <div className="w-full min-h-screen flex flex-col md:flex-row items-stretch bg-[#eaf6fb] relative">
       {/* Mobile: Logo as background */}
       <div
         className="md:hidden absolute inset-0 z-0"
         style={{
-          background: "linear-gradient(135deg, #0A4747 60%, #14B8A6 100%)",
+          background: "linear-gradient(135deg, #eaf6fb 60%, #fdf6e3 100%)",
         }}
       >
         <img
@@ -293,28 +349,162 @@ const Signup = () => {
       >
         <IoHomeOutline className="text-2xl text-[#0A4747]" />
       </button>
-      {/* Left: Logo and Description (fixed, non-scrollable) */}
-      <div className="hidden md:flex flex-col justify-center items-center w-1/2 fixed left-0 top-0 bottom-0 h-full z-10 overflow-hidden bg-[#0A4747]">
-        {/* Background lines (SVG grid, matches landing page style) */}
-        <div className="absolute inset-0 z-0 pointer-events-none">
-          <svg width="100%" height="100%" className="w-full h-full" style={{ opacity: 0.15 }}>
+      {/* Desktop: Animated Cloud/Water Background */}
+      <div
+        className="hidden md:flex flex-col justify-end items-center w-1/2 fixed left-0 top-0 bottom-0 h-full z-10 overflow-hidden"
+        style={{ position: "fixed" }}
+        onMouseMove={handleMouseMove}
+      >
+        <motion.div
+          ref={waterRef}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.2 }}
+          className="absolute inset-0 w-full h-full z-0 pointer-events-none"
+          style={{
+            background: `
+              linear-gradient(135deg, #f7fafc 0%, #eaf6fb 60%, #fdf6e3 100%)
+            `,
+            transition: "background 0.7s",
+            filter: "blur(0.5px) drop-shadow(0 8px 40px #eaf6fbAA)",
+          }}
+        >
+          {/* SVG Water Waves and Bubbles */}
+          <svg
+            width="100%"
+            height="100%"
+            viewBox="0 0 600 800"
+            className="absolute inset-0 w-full h-full"
+            style={{ opacity: 0.22 }}
+          >
             <defs>
-              <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#fff" strokeWidth="0.5"/>
-              </pattern>
+              <linearGradient id="waterGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stopColor="#b2e6f7" />
+                <stop offset="60%" stopColor="#F59E42" />
+                <stop offset="100%" stopColor="#fff" />
+              </linearGradient>
             </defs>
-            <rect width="100%" height="100%" fill="url(#grid)" />
+            <motion.path
+              d="M0,700 Q300,650 600,700 T1200,700 V800 H0Z"
+              fill="url(#waterGrad)"
+              animate={{
+                d: [
+                  "M0,700 Q300,650 600,700 T1200,700 V800 H0Z",
+                  "M0,700 Q300,720 600,700 T1200,700 V800 H0Z",
+                  "M0,700 Q300,650 600,700 T1200,700 V800 H0Z",
+                ],
+              }}
+              transition={{
+                repeat: Infinity,
+                duration: 10,
+                ease: "easeInOut",
+              }}
+            />
+            <motion.path
+              d="M0,750 Q300,730 600,750 T1200,750 V800 H0Z"
+              fill="#F59E42"
+              opacity={0.5}
+              animate={{
+                d: [
+                  "M0,750 Q300,730 600,750 T1200,750 V800 H0Z",
+                  "M0,750 Q300,770 600,750 T1200,750 V800 H0Z",
+                  "M0,750 Q300,730 600,750 T1200,750 V800 H0Z",
+                ],
+              }}
+              transition={{
+                repeat: Infinity,
+                duration: 13,
+                ease: "easeInOut",
+                delay: 2,
+              }}
+            />
+            {/* Animated Bubbles */}
+            <motion.circle
+              cx="120"
+              cy="700"
+              r="18"
+              fill="#fff"
+              opacity={0.7}
+              animate={{
+                cy: [700, 400, 200, 700],
+                opacity: [0.7, 0.5, 0.3, 0.7],
+                r: [18, 22, 16, 18],
+              }}
+              transition={{
+                repeat: Infinity,
+                duration: 12,
+                ease: "easeInOut",
+                delay: 0,
+              }}
+            />
+            <motion.circle
+              cx="320"
+              cy="750"
+              r="10"
+              fill="#F59E42"
+              opacity={0.6}
+              animate={{
+                cy: [750, 500, 300, 750],
+                opacity: [0.6, 0.4, 0.2, 0.6],
+                r: [10, 14, 8, 10],
+              }}
+              transition={{
+                repeat: Infinity,
+                duration: 10,
+                ease: "easeInOut",
+                delay: 2,
+              }}
+            />
+            <motion.circle
+              cx="500"
+              cy="780"
+              r="14"
+              fill="#fff"
+              opacity={0.5}
+              animate={{
+                cy: [780, 600, 350, 780],
+                opacity: [0.5, 0.3, 0.1, 0.5],
+                r: [14, 18, 12, 14],
+              }}
+              transition={{
+                repeat: Infinity,
+                duration: 14,
+                ease: "easeInOut",
+                delay: 1,
+              }}
+            />
+            <motion.circle
+              cx="200"
+              cy="790"
+              r="8"
+              fill="#F59E42"
+              opacity={0.7}
+              animate={{
+                cy: [790, 600, 400, 790],
+                opacity: [0.7, 0.5, 0.2, 0.7],
+                r: [8, 12, 7, 8],
+              }}
+              transition={{
+                repeat: Infinity,
+                duration: 11,
+                ease: "easeInOut",
+                delay: 3,
+              }}
+            />
           </svg>
-        </div>
-        <div className="relative z-10 flex flex-col justify-center items-center">
-          <img src="/logo.gif" alt="Logo" className="w-32 mb-6 rounded-2xl" />
-          <h2 className="text-3xl font-bold text-white mb-4 text-center">Welcome to Gryndle</h2>
-          <p className="text-lg text-[#F5F7FA] text-center max-w-md">
+        </motion.div>
+        {/* Logo and Text at the bottom */}
+        <div className="relative z-10 w-full flex flex-col items-center justify-end pb-10 h-full">
+          <img src="/logo.gif" alt="Logo" className="w-28 mb-2 rounded-2xl" />
+          <h2 className="text-2xl font-bold text-[#0A4747] mb-1 text-center drop-shadow-lg">
+            Welcome to Gryndle
+          </h2>
+          <p className="text-base text-[#0A4747] text-center max-w-md drop-shadow-lg">
             The next-generation fintech platform for seamless business payments, compliance, and growth across Africa and beyond.
           </p>
         </div>
       </div>
-      {/* Right: Signup Form (scrollable, 50% width) */}
+      {/* Right: Signup Form */}
       <div className="w-full md:w-1/2 flex flex-col justify-center items-center py-8 md:ml-[50vw] md:pl-0 relative z-10">
         <div className="w-full max-w-lg bg-white rounded-2xl shadow-xl px-4 py-8 md:px-10 md:py-10">
           <h2 className="text-2xl md:text-3xl font-bold text-[#0A4747] mb-6 text-center">
@@ -448,15 +638,24 @@ const Signup = () => {
               <div className="relative">
                 <FaLock className="absolute left-3 top-1/2 -translate-y-1/2 text-[#14B8A6]" />
                 <input
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   name="password"
                   value={form.password}
                   onChange={handleChange}
                   required
-                  className="w-full p-3 pl-10 rounded border border-gray-300 focus:outline-none"
+                  className="w-full p-3 pl-10 pr-10 rounded border border-gray-300 focus:outline-none"
                   placeholder="Password"
                   autoComplete="new-password"
                 />
+                <span
+                  className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-xl text-[#14B8A6]"
+                  onClick={() => setShowPassword((v) => !v)}
+                  tabIndex={0}
+                  role="button"
+                  aria-label={showPassword ? "Hide password" : "Show password"}
+                >
+                  {showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+                </span>
               </div>
             </div>
             {/* Confirm Password */}
@@ -465,15 +664,24 @@ const Signup = () => {
               <div className="relative">
                 <FaLock className="absolute left-3 top-1/2 -translate-y-1/2 text-[#14B8A6]" />
                 <input
-                  type="password"
+                  type={showConfirm ? "text" : "password"}
                   name="confirmPassword"
                   value={form.confirmPassword}
                   onChange={handleChange}
                   required
-                  className="w-full p-3 pl-10 rounded border border-gray-300 focus:outline-none"
+                  className="w-full p-3 pl-10 pr-10 rounded border border-gray-300 focus:outline-none"
                   placeholder="Confirm password"
                   autoComplete="new-password"
                 />
+                <span
+                  className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-xl text-[#14B8A6]"
+                  onClick={() => setShowConfirm((v) => !v)}
+                  tabIndex={0}
+                  role="button"
+                  aria-label={showConfirm ? "Hide password" : "Show password"}
+                >
+                  {showConfirm ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+                </span>
               </div>
               {form.password && form.confirmPassword && form.password !== form.confirmPassword && (
                 <span className="text-red-500 text-xs">Passwords do not match</span>
@@ -507,9 +715,12 @@ const Signup = () => {
                   required
                 />
                 I agree to Gryndle's{" "}
-                <a href="#" className="text-[#14B8A6] underline ml-1">
+                <span
+                  className="text-[#14B8A6] underline ml-1 cursor-pointer"
+                  onClick={() => setTermsVisible(true)}
+                >
                   Terms and Conditions
-                </a>
+                </span>
               </label>
               <label className="flex items-center text-sm text-[#0A4747]">
                 <input
@@ -521,9 +732,12 @@ const Signup = () => {
                   required
                 />
                 I agree to Gryndle's{" "}
-                <a href="#" className="text-[#14B8A6] underline ml-1">
+                <span
+                  className="text-[#14B8A6] underline ml-1 cursor-pointer"
+                  onClick={() => setPrivacyVisible(true)}
+                >
                   Privacy Policy
-                </a>
+                </span>
               </label>
             </div>
             {/* Signup Button */}
@@ -546,6 +760,47 @@ const Signup = () => {
           </form>
         </div>
       </div>
+      {/* Ant Design Modals for Terms and Privacy */}
+      <Modal
+        title="Terms and Conditions"
+        open={termsVisible}
+        onCancel={() => setTermsVisible(false)}
+        footer={null}
+        width={600}
+      >
+        <div style={{ maxHeight: 350, overflowY: "auto" }}>
+          <h3>Welcome to Gryndle!</h3>
+          <p>
+            By using our platform, you agree to comply with all applicable laws and regulations. You must provide accurate information and keep your account secure. Unauthorized use or access is prohibited. Gryndle reserves the right to update these terms at any time. Please review regularly.
+          </p>
+          <ul>
+            <li>Use the platform responsibly and legally.</li>
+            <li>Do not share your password with others.</li>
+            <li>Respect the privacy and rights of other users.</li>
+            <li>Violations may result in account suspension or termination.</li>
+          </ul>
+        </div>
+      </Modal>
+      <Modal
+        title="Privacy Policy"
+        open={privacyVisible}
+        onCancel={() => setPrivacyVisible(false)}
+        footer={null}
+        width={600}
+      >
+        <div style={{ maxHeight: 350, overflowY: "auto" }}>
+          <h3>Your Privacy Matters</h3>
+          <p>
+            Gryndle is committed to protecting your personal information. We collect only what is necessary to provide our services and never sell your data to third parties. Your information is stored securely and used in accordance with our privacy practices.
+          </p>
+          <ul>
+            <li>We collect data to improve your experience.</li>
+            <li>Your data is never sold or shared without consent.</li>
+            <li>You can request deletion of your data at any time.</li>
+            <li>Contact us for any privacy-related questions.</li>
+          </ul>
+        </div>
+      </Modal>
     </div>
   );
 };

@@ -9,6 +9,7 @@ import { FaAws, FaCcMastercard, FaCcVisa } from "react-icons/fa";
 import { motion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useNavigate } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -22,6 +23,7 @@ const Landingpage = () => {
   const apiRef = useRef(null);
   const featuresRef = useRef(null);
   const partnersRef = useRef(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -215,6 +217,7 @@ const Landingpage = () => {
                     "linear-gradient(90deg, #0A4747 0%, #14B8A6 100%)",
                   color: "#fff",
                 }}
+                onClick={() => navigate("/solution")}
                 onMouseOver={(e) => {
                   e.currentTarget.style.background =
                     "linear-gradient(90deg, #14B8A6 0%, #0A4747 100%)";
@@ -247,6 +250,7 @@ const Landingpage = () => {
                     "linear-gradient(90deg, #0A4747 0%, #14B8A6 100%)",
                   color: "#fff",
                 }}
+                onClick={() => navigate("/contact")}
                 onMouseOver={(e) => {
                   e.currentTarget.style.background =
                     "linear-gradient(90deg, #14B8A6 0%, #0A4747 100%)";
@@ -501,6 +505,7 @@ const Landingpage = () => {
               background: "linear-gradient(90deg, #0A4747 0%, #14B8A6 100%)",
               color: "#fff",
             }}
+            onClick={() => navigate("/solution")}
             onMouseOver={(e) => {
               e.currentTarget.style.background =
                 "linear-gradient(90deg, #14B8A6 0%, #0A4747 100%)";
@@ -550,6 +555,7 @@ const Landingpage = () => {
             background: "linear-gradient(90deg, #0A4747 0%, #14B8A6 100%)",
             color: "#fff",
           }}
+          onClick={() => navigate("/docs")}
           onMouseOver={(e) => {
             e.currentTarget.style.background =
               "linear-gradient(90deg, #a8d8d2 0%, #f0f4f3 100%)";
@@ -676,6 +682,7 @@ const Landingpage = () => {
                   background: "linear-gradient(90deg, #0A4747 0%, #14B8A6 100%)",
                   color: "#fff",
                 }}
+                onClick={() => navigate("/contact")}
                 onMouseOver={(e) => {
                   e.currentTarget.style.background =
                     "linear-gradient(90deg, #14B8A6 0%, #0A4747 100%)";
@@ -707,6 +714,7 @@ const Landingpage = () => {
                   background: "linear-gradient(90deg, #0A4747 0%, #14B8A6 100%)",
                   color: "#fff",
                 }}
+                onClick={() => navigate("/signup")}
                 onMouseOver={(e) => {
                   e.currentTarget.style.background =
                     "linear-gradient(90deg, #14B8A6 0%, #0A4747 100%)";

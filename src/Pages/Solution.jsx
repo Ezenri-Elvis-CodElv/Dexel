@@ -123,6 +123,8 @@ const Solution = () => {
               e.currentTarget.style.transform = "scale(1)";
               e.currentTarget.style.boxShadow = "none";
             }}
+            onClick={() => nav("/contact")}
+           
           >
             Contact Us
             <span

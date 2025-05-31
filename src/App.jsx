@@ -16,6 +16,7 @@ import ForgetPassword from "./auth/ForgetPassword";
 import Solution from "./Pages/Solution";
 import Blog from "./Pages/Blog";
 import Resources from "./Pages/Resources";
+import Product from "./Pages/Product";
 
 // Define your routes
 const router = createBrowserRouter([
@@ -34,6 +35,7 @@ const router = createBrowserRouter([
       { path: "blog", element: <Blog /> },
       { path: "resources", element: <Resources /> },
       { path: "solution", element: <Solution /> },
+      { path: "product", element: <Product /> },
     ],
   },
   { path: "/login", element: <Login /> },

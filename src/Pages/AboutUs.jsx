@@ -166,10 +166,10 @@ const AboutUs = () => {
 				>
 					{/* Add your company images here */}
 					<div className="w-40 h-40 bg-white/20 rounded-2xl shadow-lg flex items-center justify-center animate-pulse">
-						<span className="text-[#14B8A6] font-bold text-xl">Your Image</span>
+						<span className="text-[#14B8A6] font-bold text-xl"><img src="/IMG_9557.jpeg" alt="" /></span>
 					</div>
 					<div className="w-40 h-40 bg-white/20 rounded-2xl shadow-lg flex items-center justify-center animate-pulse">
-						<span className="text-[#F59E42] font-bold text-xl">Your Image</span>
+						<span className="text-[#F59E42] font-bold text-xl"><img src="" alt="" className="w-full h-full object-contain rounded-2xl"/></span>
 					</div>
 				</motion.div>
 				{/* Animated gradient line */}
@@ -218,7 +218,11 @@ const AboutUs = () => {
 				>
 					{/* Placeholder for mission image */}
 					<div className="w-64 h-64 bg-white/20 rounded-3xl shadow-xl flex items-center justify-center animate-pulse">
-						<span className="text-[#0A4747] font-bold text-lg">Mission Image</span>
+						<img
+							src="/mission2.jpg"
+							alt=""
+							className="w-full h-full object-contain rounded-3xl"
+						/>
 					</div>
 				</motion.div>
 			</section>
@@ -284,9 +288,11 @@ const AboutUs = () => {
 							<motion.div
 								key={value.title}
 								className="bg-white/80 rounded-3xl shadow-xl p-8 flex flex-col items-center justify-center border border-[#14B8A6]/10 hover:scale-105 hover:shadow-2xl transition-all duration-500"
-								initial={{ opacity: 0, y: 60 }}
-								whileInView={{ opacity: 1, y: 0 }}
+								variants={fadeInUp}
+								initial="hidden"
+								whileInView="visible"
 								viewport={{ once: true }}
+								custom={idx}
 								transition={{
 									delay: idx * 0.1,
 									duration: 0.7,

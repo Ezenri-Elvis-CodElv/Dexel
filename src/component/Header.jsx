@@ -5,32 +5,184 @@ import { MdPayment } from "react-icons/md";
 import { BsCartDash, BsGraphUpArrow } from "react-icons/bs";
 import { TbFaceId, TbLayoutDashboard } from "react-icons/tb";
 import { TfiWallet } from "react-icons/tfi";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Drawer, Button } from "antd";
 import { AiOutlineAlignRight } from "react-icons/ai";
 
 const menuItems = [
   { label: "Solution", path: "/solution" },
-    { label: "Product" },
+  { label: "Product" },
   { label: "Platform", path: "/platform" },
   { label: "About Us", path: "/aboutus" },
   { label: "Resources", path: "/resources" },
   { label: "FAQs", path: "/faqs" },
 ];
 
+// Desktop dropdown (row)
+const productDropdown = (
+  <div className="hidden md:flex flex-wrap gap-4 p-4">
+    <div className="w-[45%] p-4 bg-[#F5F7FA] rounded-xl mb-2 flex items-start gap-4 hover:bg-[#14B8A6]/20 transition">
+      <span className="bg-[#14B8A6]/20 rounded-xl p-2 flex items-center justify-center">
+        <MdPayment size={32} color="#0A4747" />
+      </span>
+      <div>
+        <h2 className="text-[#0A4747] font-bold mb-1">Multi-Rail Payments</h2>
+        <p className="text-[#64748B] text-sm">
+          Process payments across multiple channels, networks and methods from a single API.
+        </p>
+      </div>
+    </div>
+    <div className="w-[45%] p-4 bg-[#F5F7FA] rounded-xl mb-2 flex items-start gap-4 hover:bg-[#14B8A6]/20 transition">
+      <span className="bg-[#14B8A6]/20 rounded-xl p-2 flex items-center justify-center">
+        <BsCartDash size={32} color="#0A4747" />
+      </span>
+      <div>
+        <h2 className="text-[#0A4747] font-bold mb-1">Retail Management</h2>
+        <p className="text-[#64748B] text-sm">
+          Manage payment and merchants with a flexible, omni-channel platform.
+        </p>
+      </div>
+    </div>
+    <div className="w-[45%] p-4 bg-[#F5F7FA] rounded-xl mb-2 flex items-start gap-4 hover:bg-[#14B8A6]/20 transition">
+      <span className="bg-[#14B8A6]/20 rounded-xl p-2 flex items-center justify-center">
+        <TbFaceId size={32} color="#0A4747" />
+      </span>
+      <div>
+        <h2 className="text-[#0A4747] font-bold mb-1">Fraud Prevention</h2>
+        <p className="text-[#64748B] text-sm">
+          Protect your transactions with intelligent detection, flexible rules and 24/7 support.
+        </p>
+      </div>
+    </div>
+    <div className="w-[45%] p-4 bg-[#F5F7FA] rounded-xl mb-2 flex items-start gap-4 hover:bg-[#14B8A6]/20 transition">
+      <span className="bg-[#14B8A6]/20 rounded-xl p-2 flex items-center justify-center">
+        <TbLayoutDashboard size={32} color="#0A4747" />
+      </span>
+      <div>
+        <h2 className="text-[#0A4747] font-bold mb-1">Dashboard</h2>
+        <p className="text-[#64748B] text-sm">
+          Manage, monitor and optimize your payments in real time from a single place.
+        </p>
+      </div>
+    </div>
+    <div className="w-[45%] p-4 bg-[#F5F7FA] rounded-xl mb-2 flex items-start gap-4 hover:bg-[#14B8A6]/20 transition">
+      <span className="bg-[#14B8A6]/20 rounded-xl p-2 flex items-center justify-center">
+        <TfiWallet size={32} color="#0A4747" />
+      </span>
+      <div>
+        <h2 className="text-[#0A4747] font-bold mb-1">Operation and Reconciliations</h2>
+        <p className="text-[#64748B] text-sm">
+          Enables fast, secure and transparent cashouts with automated reconciliation.
+        </p>
+      </div>
+    </div>
+    <div className="w-[45%] p-4 bg-[#F5F7FA] rounded-xl mb-2 flex items-start gap-4 hover:bg-[#14B8A6]/20 transition">
+      <span className="bg-[#14B8A6]/20 rounded-xl p-2 flex items-center justify-center">
+        <BsGraphUpArrow size={32} color="#0A4747" />
+      </span>
+      <div>
+        <h2 className="text-[#0A4747] font-bold mb-1">Reporting & Data</h2>
+        <p className="text-[#64748B] text-sm">
+          Access real-time data to optimize payments, decisions and strategies.
+        </p>
+      </div>
+    </div>
+  </div>
+);
+
+// Mobile dropdown (column)
+const productDropdownMobile = (
+  <div className="flex flex-col gap-4 p-2">
+    <div className="p-4 bg-[#F5F7FA] rounded-xl mb-2 flex items-start gap-4 hover:bg-[#14B8A6]/20 transition">
+      <span className="bg-[#14B8A6]/20 rounded-xl p-2 flex items-center justify-center">
+        <MdPayment size={32} color="#0A4747" />
+      </span>
+      <div>
+        <h2 className="text-[#0A4747] font-bold mb-1">Multi-Rail Payments</h2>
+        <p className="text-[#64748B] text-sm">
+          Process payments across multiple channels, networks and methods from a single API.
+        </p>
+      </div>
+    </div>
+    <div className="p-4 bg-[#F5F7FA] rounded-xl mb-2 flex items-start gap-4 hover:bg-[#14B8A6]/20 transition">
+      <span className="bg-[#14B8A6]/20 rounded-xl p-2 flex items-center justify-center">
+        <BsCartDash size={32} color="#0A4747" />
+      </span>
+      <div>
+        <h2 className="text-[#0A4747] font-bold mb-1">Retail Management</h2>
+        <p className="text-[#64748B] text-sm">
+          Manage payment and merchants with a flexible, omni-channel platform.
+        </p>
+      </div>
+    </div>
+    <div className="p-4 bg-[#F5F7FA] rounded-xl mb-2 flex items-start gap-4 hover:bg-[#14B8A6]/20 transition">
+      <span className="bg-[#14B8A6]/20 rounded-xl p-2 flex items-center justify-center">
+        <TbFaceId size={32} color="#0A4747" />
+      </span>
+      <div>
+        <h2 className="text-[#0A4747] font-bold mb-1">Fraud Prevention</h2>
+        <p className="text-[#64748B] text-sm">
+          Protect your transactions with intelligent detection, flexible rules and 24/7 support.
+        </p>
+      </div>
+    </div>
+    <div className="p-4 bg-[#F5F7FA] rounded-xl mb-2 flex items-start gap-4 hover:bg-[#14B8A6]/20 transition">
+      <span className="bg-[#14B8A6]/20 rounded-xl p-2 flex items-center justify-center">
+        <TbLayoutDashboard size={32} color="#0A4747" />
+      </span>
+      <div>
+        <h2 className="text-[#0A4747] font-bold mb-1">Dashboard</h2>
+        <p className="text-[#64748B] text-sm">
+          Manage, monitor and optimize your payments in real time from a single place.
+        </p>
+      </div>
+    </div>
+    <div className="p-4 bg-[#F5F7FA] rounded-xl mb-2 flex items-start gap-4 hover:bg-[#14B8A6]/20 transition">
+      <span className="bg-[#14B8A6]/20 rounded-xl p-2 flex items-center justify-center">
+        <TfiWallet size={32} color="#0A4747" />
+      </span>
+      <div>
+        <h2 className="text-[#0A4747] font-bold mb-1">Operation and Reconciliations</h2>
+        <p className="text-[#64748B] text-sm">
+          Enables fast, secure and transparent cashouts with automated reconciliation.
+        </p>
+      </div>
+    </div>
+    <div className="p-4 bg-[#F5F7FA] rounded-xl mb-2 flex items-start gap-4 hover:bg-[#14B8A6]/20 transition">
+      <span className="bg-[#14B8A6]/20 rounded-xl p-2 flex items-center justify-center">
+        <BsGraphUpArrow size={32} color="#0A4747" />
+      </span>
+      <div>
+        <h2 className="text-[#0A4747] font-bold mb-1">Reporting & Data</h2>
+        <p className="text-[#64748B] text-sm">
+          Access real-time data to optimize payments, decisions and strategies.
+        </p>
+      </div>
+    </div>
+  </div>
+);
+
 const Header = () => {
   const nav = useNavigate();
+  const location = useLocation();
   const [open, setOpen] = useState(false);
-  const [active, setActive] = useState("Solution");
-  const [scrolled, setScrolled] = useState(false);
   const [drawerVisible, setDrawerVisible] = useState(false);
+  const [mobileProductOpen, setMobileProductOpen] = useState(false);
   const dropdownRef = useRef(null);
 
+  // Memoize getActiveLabel for useEffect dependency
+  const getActiveLabel = React.useCallback(() => {
+    const found = menuItems.find(
+      (item) => item.path && location.pathname.startsWith(item.path)
+    );
+    return found ? found.label : "";
+  }, [location.pathname]);
+
+  const [active, setActive] = useState(getActiveLabel());
+
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 150);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    setActive(getActiveLabel());
+  }, [getActiveLabel]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -42,15 +194,8 @@ const Header = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const handleClick = () => setOpen(!open);
-
-  // Responsive: show drawer on mobile, normal menu on desktop
   return (
-    <div
-      className={`sticky top-0 z-50 transition-shadow duration-300 ${
-        scrolled ? "shadow-2xl" : ""
-      }`}
-    >
+    <div className="sticky top-0 z-50 transition-shadow duration-300">
       <div
         className="h-[15vh] w-full flex justify-center items-center"
         style={{
@@ -62,7 +207,10 @@ const Header = () => {
           {/* Logo */}
           <div
             className="w-[200px] h-[50px] flex flex-row justify-center items-center gap-2"
-            onClick={() => nav("/")}
+            onClick={() => {
+              setActive("");
+              nav("/");
+            }}
           >
             <img
               src="/logo.gif"
@@ -71,7 +219,10 @@ const Header = () => {
             />
             <span
               className="text-[25px] font-bold cursor-pointer text-[#0A4747]"
-              onClick={() => nav("/")}
+              onClick={() => {
+                setActive("");
+                nav("/");
+              }}
             >
               Gryndle
             </span>
@@ -88,22 +239,29 @@ const Header = () => {
           <div className="hidden md:flex w-[80%] h-[100%] flex-row justify-center items-center">
             <div className="w-[60%] h-[100%] bg-white flex flex-row justify-center items-center">
               <ul className="flex flex-row justify-center items-center gap-7">
-                {menuItems.map((item) =>
-                  item.label === "Product" ? (
-                    <div
-                      onClick={handleClick}
-                      key={item.label}
-                      className="relative flex items-center"
-                      ref={dropdownRef}
-                    >
-                      <li
-                        className={`cursor-pointer text-[#0A4747] flex flex-row items-center justify-center hover:text-[#14B8A6] transition-all duration-300 ease-in-out`}
-                        onClick={() => {
-                          setActive(item.label);
-                          if (item.path) nav(item.path);
-                        }}
-                      >
-                        {item.label}
+                {menuItems.map((item) => (
+                  <li
+                    key={item.label}
+                    className={`relative cursor-pointer flex flex-row items-center justify-center font-semibold transition-all duration-300 text-[15px] ${
+                      active === item.label
+                        ? "text-[#0A4747]"
+                        : "text-[#64748B]"
+                    } hover:text-[#14B8A6]`}
+                    onClick={() => {
+                      if (item.label === "Product") {
+                        setOpen((prev) => !prev);
+                        setActive(item.label);
+                      } else {
+                        setActive(item.label);
+                        if (item.path) nav(item.path);
+                        setOpen(false);
+                      }
+                    }}
+                    ref={item.label === "Product" ? dropdownRef : null}
+                  >
+                    {item.label}
+                    {item.label === "Product" && (
+                      <>
                         {open ? <IoIosArrowUp /> : <IoIosArrowDown />}
                         <span
                           className={`absolute left-0 -bottom-1 h-[3px] rounded-full`}
@@ -114,115 +272,17 @@ const Header = () => {
                             transition: "all 0.3s",
                           }}
                         />
-                      </li>
-                      {open && (
-                        <div
-                          onClick={(e) => e.stopPropagation()}
-                          className="h-[50vh] w-[750px] absolute top-[40px] border-[7px] border-[#14B8A6] left-0 mt-2 bg-white shadow-2xl rounded-3xl p-2 z-10 flex flex-col overflow-y-auto"
-                        >
-                          <div className="flex flex-wrap gap-4 p-4">
-                            <div className="w-[45%] p-4 bg-[#F5F7FA] rounded-xl mb-2 flex items-start gap-4 hover:bg-[#14B8A6]/20 transition">
-                              <span className="bg-[#14B8A6]/20 rounded-xl p-2 flex items-center justify-center">
-                                <MdPayment size={32} color="#0A4747" />
-                              </span>
-                              <div>
-                                <h2 className="text-[#0A4747] font-bold mb-1">
-                                  Multi-Rail Payments
-                                </h2>
-                                <p className="text-[#64748B] text-sm">
-                                  Process payments across multiple channels,
-                                  networks and methods from a single API.
-                                </p>
-                              </div>
-                            </div>
-                            <div className="w-[45%] p-4 bg-[#F5F7FA] rounded-xl mb-2 flex items-start gap-4 hover:bg-[#14B8A6]/20 transition">
-                              <span className="bg-[#14B8A6]/20 rounded-xl p-2 flex items-center justify-center">
-                                <BsCartDash size={32} color="#0A4747" />
-                              </span>
-                              <div>
-                                <h2 className="text-[#0A4747] font-bold mb-1">
-                                  Retail Management
-                                </h2>
-                                <p className="text-[#64748B] text-sm">
-                                  Manage payment and merchants with a flexible,
-                                  omni-channel platform.
-                                </p>
-                              </div>
-                            </div>
-                            <div className="w-[45%] p-4 bg-[#F5F7FA] rounded-xl mb-2 flex items-start gap-4 hover:bg-[#14B8A6]/20 transition">
-                              <span className="bg-[#14B8A6]/20 rounded-xl p-2 flex items-center justify-center">
-                                <TbFaceId size={32} color="#0A4747" />
-                              </span>
-                              <div>
-                                <h2 className="text-[#0A4747] font-bold mb-1">
-                                  Fraud Prevention
-                                </h2>
-                                <p className="text-[#64748B] text-sm">
-                                  Protect your transactions with intelligent
-                                  detection, flexible rules and 24/7 support.
-                                </p>
-                              </div>
-                            </div>
-                            <div className="w-[45%] p-4 bg-[#F5F7FA] rounded-xl mb-2 flex items-start gap-4 hover:bg-[#14B8A6]/20 transition">
-                              <span className="bg-[#14B8A6]/20 rounded-xl p-2 flex items-center justify-center">
-                                <TbLayoutDashboard size={32} color="#0A4747" />
-                              </span>
-                              <div>
-                                <h2 className="text-[#0A4747] font-bold mb-1">
-                                  Dashboard
-                                </h2>
-                                <p className="text-[#64748B] text-sm">
-                                  Manage, monitor and optimize your payments in
-                                  real time from a single place.
-                                </p>
-                              </div>
-                            </div>
-                            <div className="w-[45%] p-4 bg-[#F5F7FA] rounded-xl mb-2 flex items-start gap-4 hover:bg-[#14B8A6]/20 transition">
-                              <span className="bg-[#14B8A6]/20 rounded-xl p-2 flex items-center justify-center">
-                                <TfiWallet size={32} color="#0A4747" />
-                              </span>
-                              <div>
-                                <h2 className="text-[#0A4747] font-bold mb-1">
-                                  Operation and Reconciliations
-                                </h2>
-                                <p className="text-[#64748B] text-sm">
-                                  Enables fast, secure and transparent cashouts
-                                  with automated reconciliation.
-                                </p>
-                              </div>
-                            </div>
-                            <div className="w-[45%] p-4 bg-[#F5F7FA] rounded-xl mb-2 flex items-start gap-4 hover:bg-[#14B8A6]/20 transition">
-                              <span className="bg-[#14B8A6]/20 rounded-xl p-2 flex items-center justify-center">
-                                <BsGraphUpArrow size={32} color="#0A4747" />
-                              </span>
-                              <div>
-                                <h2 className="text-[#0A4747] font-bold mb-1">
-                                  Reporting & Data
-                                </h2>
-                                <p className="text-[#64748B] text-sm">
-                                  Access real-time data to optimize payments,
-                                  decisions and strategies.
-                                </p>
-                              </div>
-                            </div>
+                        {open && (
+                          <div
+                            onClick={(e) => e.stopPropagation()}
+                            className="h-[50vh] w-[750px] absolute top-[40px] border-[7px] border-[#14B8A6] left-0 mt-2 bg-white shadow-2xl rounded-3xl p-2 z-10 flex flex-col overflow-y-auto"
+                          >
+                            {productDropdown}
                           </div>
-                        </div>
-                      )}
-                    </div>
-                  ) : (
-                    <li
-                      key={item.label}
-                      className={`relative cursor-pointer flex flex-row items-center justify-center font-semibold transition-all duration-300 text-[18px] ${
-                        active === item.label
-                          ? "text-[#0A4747]"
-                          : "text-[#64748B]"
-                      } hover:text-[#14B8A6]`}
-                      onClick={() => {
-                        setActive(item.label);
-                        if (item.path) nav(item.path);
-                      }}
-                    >
-                      {item.label}
+                        )}
+                      </>
+                    )}
+                    {item.label !== "Product" && (
                       <span
                         className={`absolute left-0 -bottom-1 h-[3px] rounded-full`}
                         style={{
@@ -232,9 +292,9 @@ const Header = () => {
                           transition: "all 0.3s",
                         }}
                       />
-                    </li>
-                  )
-                )}
+                    )}
+                  </li>
+                ))}
               </ul>
             </div>
             <div className="w-[35%]  h-[100%] flex justify-end items-center">
@@ -285,9 +345,12 @@ const Header = () => {
       <Drawer
         title={null}
         placement="right"
-        onClose={() => setDrawerVisible(false)}
+        onClose={() => {
+          setDrawerVisible(false);
+          setMobileProductOpen(false);
+        }}
         open={drawerVisible}
-        width={320}
+        width={340}
         bodyStyle={{ padding: 0, background: "#fff" }}
         className="md:hidden"
       >
@@ -297,19 +360,23 @@ const Header = () => {
               item.label === "Product" ? (
                 <li
                   key={item.label}
-                  className="cursor-pointer text-[#0A4747] flex flex-row items-center justify-between py-2"
+                  className={`cursor-pointer font-semibold text-[15px] flex flex-row items-center justify-between py-2 ${
+                    active === item.label ? "text-[#0A4747]" : "text-[#64748B]"
+                  } hover:text-[#14B8A6]`}
                   onClick={() => {
                     setActive(item.label);
-                    setOpen(!open);
+                    setMobileProductOpen((prev) => !prev);
                   }}
                 >
-                  {item.label}
-                  {open ? <IoIosArrowUp /> : <IoIosArrowDown />}
+                  <span className="flex items-center">
+                    {item.label}
+                    {mobileProductOpen ? <IoIosArrowUp /> : <IoIosArrowDown />}
+                  </span>
                 </li>
               ) : (
                 <li
                   key={item.label}
-                  className={`cursor-pointer font-semibold text-[18px] ${
+                  className={`cursor-pointer font-semibold text-[15px] ${
                     active === item.label ? "text-[#0A4747]" : "text-[#64748B]"
                   } hover:text-[#14B8A6] py-2`}
                   onClick={() => {
@@ -323,6 +390,10 @@ const Header = () => {
               )
             )}
           </ul>
+          {/* Mobile Product Dropdown */}
+          {mobileProductOpen && (
+            <div className="px-2 py-2">{productDropdownMobile}</div>
+          )}
           <div className="flex flex-col gap-4 mt-10 px-6">
             <button
               className="w-full py-3 rounded-3xl bg-gradient-to-r from-[#0A4747] to-[#14B8A6] text-white font-semibold text-lg transition-all duration-300"
