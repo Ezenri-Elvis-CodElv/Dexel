@@ -6,7 +6,10 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { motion } from "framer-motion";
 
 const Login = () => {
-  const [form, setForm] = useState({ email: "", password: "" });
+  const [form, setForm] = useState({
+    email: "grndletechnology@gmail.com",
+    password: "grndletechnology1234",
+  });
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
@@ -16,8 +19,16 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle login logic here
-    console.log(form);
+    // Simulate login: set token and redirect to dashboard
+    if (
+      form.email === "grndletechnology@gmail.com" &&
+      form.password === "grndletechnology1234"
+    ) {
+      localStorage.setItem("authToken", "sample_token");
+      navigate("/dashboard");
+    } else {
+      alert("Invalid credentials");
+    }
   };
 
   // Validation for enabling the button

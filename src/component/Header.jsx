@@ -19,148 +19,190 @@ const menuItems = [
 ];
 
 // Desktop dropdown (row)
-const productDropdown = (
-  <div className="hidden md:flex flex-wrap gap-4 p-4">
-    <div className="w-[45%] p-4 bg-[#F5F7FA] rounded-xl mb-2 flex items-start gap-4 hover:bg-[#14B8A6]/20 transition">
-      <span className="bg-[#14B8A6]/20 rounded-xl p-2 flex items-center justify-center">
-        <MdPayment size={32} color="#0A4747" />
-      </span>
-      <div>
-        <h2 className="text-[#0A4747] font-bold mb-1">Multi-Rail Payments</h2>
-        <p className="text-[#64748B] text-sm">
-          Process payments across multiple channels, networks and methods from a single API.
-        </p>
+const ProductDropdown = () => {
+  const navigate = useNavigate();
+  return (
+    <div className="hidden md:flex flex-wrap gap-4 p-4">
+      <div
+        className="w-[45%] p-4 bg-[#F5F7FA] rounded-xl mb-2 flex items-start gap-4 hover:bg-[#14B8A6]/20 transition cursor-pointer"
+        onClick={() => navigate("/product/multi-rail")}
+      >
+        <span className="bg-[#14B8A6]/20 rounded-xl p-2 flex items-center justify-center">
+          <MdPayment size={32} color="#0A4747" />
+        </span>
+        <div>
+          <h2 className="text-[#0A4747] font-bold mb-1">Multi-Rail Payments</h2>
+          <p className="text-[#64748B] text-sm">
+            Process payments across multiple channels, networks and methods from a single API.
+          </p>
+        </div>
+      </div>
+      <div
+        className="w-[45%] p-4 bg-[#F5F7FA] rounded-xl mb-2 flex items-start gap-4 hover:bg-[#14B8A6]/20 transition cursor-pointer"
+        onClick={() => navigate("/product/retail")}
+      >
+        <span className="bg-[#14B8A6]/20 rounded-xl p-2 flex items-center justify-center">
+          <BsCartDash size={32} color="#0A4747" />
+        </span>
+        <div>
+          <h2 className="text-[#0A4747] font-bold mb-1">Retail Management</h2>
+          <p className="text-[#64748B] text-sm">
+            Manage payment and merchants with a flexible, omni-channel platform.
+          </p>
+        </div>
+      </div>
+      <div
+        className="w-[45%] p-4 bg-[#F5F7FA] rounded-xl mb-2 flex items-start gap-4 hover:bg-[#14B8A6]/20 transition cursor-pointer"
+        onClick={() => navigate("/product/fraud-prevention")}
+      >
+        <span className="bg-[#14B8A6]/20 rounded-xl p-2 flex items-center justify-center">
+          <TbFaceId size={32} color="#0A4747" />
+        </span>
+        <div>
+          <h2 className="text-[#0A4747] font-bold mb-1">Fraud Prevention</h2>
+          <p className="text-[#64748B] text-sm">
+            Protect your transactions with intelligent detection, flexible rules and 24/7 support.
+          </p>
+        </div>
+      </div>
+      <div
+        className="w-[45%] p-4 bg-[#F5F7FA] rounded-xl mb-2 flex items-start gap-4 hover:bg-[#14B8A6]/20 transition cursor-pointer"
+        onClick={() => navigate("/product/dashboard")}
+      >
+        <span className="bg-[#14B8A6]/20 rounded-xl p-2 flex items-center justify-center">
+          <TbLayoutDashboard size={32} color="#0A4747" />
+        </span>
+        <div>
+          <h2 className="text-[#0A4747] font-bold mb-1">Dashboard</h2>
+          <p className="text-[#64748B] text-sm">
+            Manage, monitor and optimize your payments in real time from a single place.
+          </p>
+        </div>
+      </div>
+      <div
+        className="w-[45%] p-4 bg-[#F5F7FA] rounded-xl mb-2 flex items-start gap-4 hover:bg-[#14B8A6]/20 transition cursor-pointer"
+        onClick={() => navigate("/product/operation-reconciliations")}
+      >
+        <span className="bg-[#14B8A6]/20 rounded-xl p-2 flex items-center justify-center">
+          <TfiWallet size={32} color="#0A4747" />
+        </span>
+        <div>
+          <h2 className="text-[#0A4747] font-bold mb-1">Operation and Reconciliations</h2>
+          <p className="text-[#64748B] text-sm">
+            Enables fast, secure and transparent cashouts with automated reconciliation.
+          </p>
+        </div>
+      </div>
+      <div
+        className="w-[45%] p-4 bg-[#F5F7FA] rounded-xl mb-2 flex items-start gap-4 hover:bg-[#14B8A6]/20 transition cursor-pointer"
+        onClick={() => navigate("/product/reporting-data")}
+      >
+        <span className="bg-[#14B8A6]/20 rounded-xl p-2 flex items-center justify-center">
+          <BsGraphUpArrow size={32} color="#0A4747" />
+        </span>
+        <div>
+          <h2 className="text-[#0A4747] font-bold mb-1">Reporting & Data</h2>
+          <p className="text-[#64748B] text-sm">
+            Access real-time data to optimize payments, decisions and strategies.
+          </p>
+        </div>
       </div>
     </div>
-    <div className="w-[45%] p-4 bg-[#F5F7FA] rounded-xl mb-2 flex items-start gap-4 hover:bg-[#14B8A6]/20 transition">
-      <span className="bg-[#14B8A6]/20 rounded-xl p-2 flex items-center justify-center">
-        <BsCartDash size={32} color="#0A4747" />
-      </span>
-      <div>
-        <h2 className="text-[#0A4747] font-bold mb-1">Retail Management</h2>
-        <p className="text-[#64748B] text-sm">
-          Manage payment and merchants with a flexible, omni-channel platform.
-        </p>
-      </div>
-    </div>
-    <div className="w-[45%] p-4 bg-[#F5F7FA] rounded-xl mb-2 flex items-start gap-4 hover:bg-[#14B8A6]/20 transition">
-      <span className="bg-[#14B8A6]/20 rounded-xl p-2 flex items-center justify-center">
-        <TbFaceId size={32} color="#0A4747" />
-      </span>
-      <div>
-        <h2 className="text-[#0A4747] font-bold mb-1">Fraud Prevention</h2>
-        <p className="text-[#64748B] text-sm">
-          Protect your transactions with intelligent detection, flexible rules and 24/7 support.
-        </p>
-      </div>
-    </div>
-    <div className="w-[45%] p-4 bg-[#F5F7FA] rounded-xl mb-2 flex items-start gap-4 hover:bg-[#14B8A6]/20 transition">
-      <span className="bg-[#14B8A6]/20 rounded-xl p-2 flex items-center justify-center">
-        <TbLayoutDashboard size={32} color="#0A4747" />
-      </span>
-      <div>
-        <h2 className="text-[#0A4747] font-bold mb-1">Dashboard</h2>
-        <p className="text-[#64748B] text-sm">
-          Manage, monitor and optimize your payments in real time from a single place.
-        </p>
-      </div>
-    </div>
-    <div className="w-[45%] p-4 bg-[#F5F7FA] rounded-xl mb-2 flex items-start gap-4 hover:bg-[#14B8A6]/20 transition">
-      <span className="bg-[#14B8A6]/20 rounded-xl p-2 flex items-center justify-center">
-        <TfiWallet size={32} color="#0A4747" />
-      </span>
-      <div>
-        <h2 className="text-[#0A4747] font-bold mb-1">Operation and Reconciliations</h2>
-        <p className="text-[#64748B] text-sm">
-          Enables fast, secure and transparent cashouts with automated reconciliation.
-        </p>
-      </div>
-    </div>
-    <div className="w-[45%] p-4 bg-[#F5F7FA] rounded-xl mb-2 flex items-start gap-4 hover:bg-[#14B8A6]/20 transition">
-      <span className="bg-[#14B8A6]/20 rounded-xl p-2 flex items-center justify-center">
-        <BsGraphUpArrow size={32} color="#0A4747" />
-      </span>
-      <div>
-        <h2 className="text-[#0A4747] font-bold mb-1">Reporting & Data</h2>
-        <p className="text-[#64748B] text-sm">
-          Access real-time data to optimize payments, decisions and strategies.
-        </p>
-      </div>
-    </div>
-  </div>
-);
+  );
+};
 
 // Mobile dropdown (column)
-const productDropdownMobile = (
-  <div className="flex flex-col gap-4 p-2">
-    <div className="p-4 bg-[#F5F7FA] rounded-xl mb-2 flex items-start gap-4 hover:bg-[#14B8A6]/20 transition">
-      <span className="bg-[#14B8A6]/20 rounded-xl p-2 flex items-center justify-center">
-        <MdPayment size={32} color="#0A4747" />
-      </span>
-      <div>
-        <h2 className="text-[#0A4747] font-bold mb-1">Multi-Rail Payments</h2>
-        <p className="text-[#64748B] text-sm">
-          Process payments across multiple channels, networks and methods from a single API.
-        </p>
+const ProductDropdownMobile = () => {
+  const navigate = useNavigate();
+  return (
+    <div className="flex flex-col gap-4 p-2">
+      <div
+        className="p-4 bg-[#F5F7FA] rounded-xl mb-2 flex items-start gap-4 hover:bg-[#14B8A6]/20 transition cursor-pointer"
+        onClick={() => navigate("/product/multi-rail")}
+      >
+        <span className="bg-[#14B8A6]/20 rounded-xl p-2 flex items-center justify-center">
+          <MdPayment size={32} color="#0A4747" />
+        </span>
+        <div>
+          <h2 className="text-[#0A4747] font-bold mb-1">Multi-Rail Payments</h2>
+          <p className="text-[#64748B] text-sm">
+            Process payments across multiple channels, networks and methods from a single API.
+          </p>
+        </div>
+      </div>
+      <div
+        className="p-4 bg-[#F5F7FA] rounded-xl mb-2 flex items-start gap-4 hover:bg-[#14B8A6]/20 transition cursor-pointer"
+        onClick={() => navigate("/product/retail")}
+      >
+        <span className="bg-[#14B8A6]/20 rounded-xl p-2 flex items-center justify-center">
+          <BsCartDash size={32} color="#0A4747" />
+        </span>
+        <div>
+          <h2 className="text-[#0A4747] font-bold mb-1">Retail Management</h2>
+          <p className="text-[#64748B] text-sm">
+            Manage payment and merchants with a flexible, omni-channel platform.
+          </p>
+        </div>
+      </div>
+      <div
+        className="p-4 bg-[#F5F7FA] rounded-xl mb-2 flex items-start gap-4 hover:bg-[#14B8A6]/20 transition cursor-pointer"
+        onClick={() => navigate("/product/fraud-prevention")}
+      >
+        <span className="bg-[#14B8A6]/20 rounded-xl p-2 flex items-center justify-center">
+          <TbFaceId size={32} color="#0A4747" />
+        </span>
+        <div>
+          <h2 className="text-[#0A4747] font-bold mb-1">Fraud Prevention</h2>
+          <p className="text-[#64748B] text-sm">
+            Protect your transactions with intelligent detection, flexible rules and 24/7 support.
+          </p>
+        </div>
+      </div>
+      <div
+        className="p-4 bg-[#F5F7FA] rounded-xl mb-2 flex items-start gap-4 hover:bg-[#14B8A6]/20 transition cursor-pointer"
+        onClick={() => navigate("/product/dashboard")}
+      >
+        <span className="bg-[#14B8A6]/20 rounded-xl p-2 flex items-center justify-center">
+          <TbLayoutDashboard size={32} color="#0A4747" />
+        </span>
+        <div>
+          <h2 className="text-[#0A4747] font-bold mb-1">Dashboard</h2>
+          <p className="text-[#64748B] text-sm">
+            Manage, monitor and optimize your payments in real time from a single place.
+          </p>
+        </div>
+      </div>
+      <div
+        className="p-4 bg-[#F5F7FA] rounded-xl mb-2 flex items-start gap-4 hover:bg-[#14B8A6]/20 transition cursor-pointer"
+        onClick={() => navigate("/product/operation-reconciliations")}
+      >
+        <span className="bg-[#14B8A6]/20 rounded-xl p-2 flex items-center justify-center">
+          <TfiWallet size={32} color="#0A4747" />
+        </span>
+        <div>
+          <h2 className="text-[#0A4747] font-bold mb-1">Operation and Reconciliations</h2>
+          <p className="text-[#64748B] text-sm">
+            Enables fast, secure and transparent cashouts with automated reconciliation.
+          </p>
+        </div>
+      </div>
+      <div
+        className="p-4 bg-[#F5F7FA] rounded-xl mb-2 flex items-start gap-4 hover:bg-[#14B8A6]/20 transition cursor-pointer"
+        onClick={() => navigate("/product/reporting-data")}
+      >
+        <span className="bg-[#14B8A6]/20 rounded-xl p-2 flex items-center justify-center">
+          <BsGraphUpArrow size={32} color="#0A4747" />
+        </span>
+        <div>
+          <h2 className="text-[#0A4747] font-bold mb-1">Reporting & Data</h2>
+          <p className="text-[#64748B] text-sm">
+            Access real-time data to optimize payments, decisions and strategies.
+          </p>
+        </div>
       </div>
     </div>
-    <div className="p-4 bg-[#F5F7FA] rounded-xl mb-2 flex items-start gap-4 hover:bg-[#14B8A6]/20 transition">
-      <span className="bg-[#14B8A6]/20 rounded-xl p-2 flex items-center justify-center">
-        <BsCartDash size={32} color="#0A4747" />
-      </span>
-      <div>
-        <h2 className="text-[#0A4747] font-bold mb-1">Retail Management</h2>
-        <p className="text-[#64748B] text-sm">
-          Manage payment and merchants with a flexible, omni-channel platform.
-        </p>
-      </div>
-    </div>
-    <div className="p-4 bg-[#F5F7FA] rounded-xl mb-2 flex items-start gap-4 hover:bg-[#14B8A6]/20 transition">
-      <span className="bg-[#14B8A6]/20 rounded-xl p-2 flex items-center justify-center">
-        <TbFaceId size={32} color="#0A4747" />
-      </span>
-      <div>
-        <h2 className="text-[#0A4747] font-bold mb-1">Fraud Prevention</h2>
-        <p className="text-[#64748B] text-sm">
-          Protect your transactions with intelligent detection, flexible rules and 24/7 support.
-        </p>
-      </div>
-    </div>
-    <div className="p-4 bg-[#F5F7FA] rounded-xl mb-2 flex items-start gap-4 hover:bg-[#14B8A6]/20 transition">
-      <span className="bg-[#14B8A6]/20 rounded-xl p-2 flex items-center justify-center">
-        <TbLayoutDashboard size={32} color="#0A4747" />
-      </span>
-      <div>
-        <h2 className="text-[#0A4747] font-bold mb-1">Dashboard</h2>
-        <p className="text-[#64748B] text-sm">
-          Manage, monitor and optimize your payments in real time from a single place.
-        </p>
-      </div>
-    </div>
-    <div className="p-4 bg-[#F5F7FA] rounded-xl mb-2 flex items-start gap-4 hover:bg-[#14B8A6]/20 transition">
-      <span className="bg-[#14B8A6]/20 rounded-xl p-2 flex items-center justify-center">
-        <TfiWallet size={32} color="#0A4747" />
-      </span>
-      <div>
-        <h2 className="text-[#0A4747] font-bold mb-1">Operation and Reconciliations</h2>
-        <p className="text-[#64748B] text-sm">
-          Enables fast, secure and transparent cashouts with automated reconciliation.
-        </p>
-      </div>
-    </div>
-    <div className="p-4 bg-[#F5F7FA] rounded-xl mb-2 flex items-start gap-4 hover:bg-[#14B8A6]/20 transition">
-      <span className="bg-[#14B8A6]/20 rounded-xl p-2 flex items-center justify-center">
-        <BsGraphUpArrow size={32} color="#0A4747" />
-      </span>
-      <div>
-        <h2 className="text-[#0A4747] font-bold mb-1">Reporting & Data</h2>
-        <p className="text-[#64748B] text-sm">
-          Access real-time data to optimize payments, decisions and strategies.
-        </p>
-      </div>
-    </div>
-  </div>
-);
+  );
+};
 
 const Header = () => {
   const nav = useNavigate();
@@ -277,7 +319,7 @@ const Header = () => {
                             onClick={(e) => e.stopPropagation()}
                             className="h-[50vh] w-[750px] absolute top-[40px] border-[7px] border-[#14B8A6] left-0 mt-2 bg-white shadow-2xl rounded-3xl p-2 z-10 flex flex-col overflow-y-auto"
                           >
-                            {productDropdown}
+                            {<ProductDropdown />}
                           </div>
                         )}
                       </>
@@ -392,7 +434,7 @@ const Header = () => {
           </ul>
           {/* Mobile Product Dropdown */}
           {mobileProductOpen && (
-            <div className="px-2 py-2">{productDropdownMobile}</div>
+            <div className="px-2 py-2">{<ProductDropdownMobile />}</div>
           )}
           <div className="flex flex-col gap-4 mt-10 px-6">
             <button
