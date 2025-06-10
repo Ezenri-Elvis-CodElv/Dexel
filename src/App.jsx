@@ -24,12 +24,12 @@ import ResetPassword from "./auth/ResetPassword";
 import ForgetPassword from "./auth/ForgetPassword";
 
 // Dashboard Pages
-import DashboardTransaction from "./pages/DashboardTransaction";
-import MultiRailPaymentsPage from "./pages/payment/MultiRailPaymentsPage";
-import RetailManagementPage from "./pages/payment/RetailManagementPage";
-import FraudPreventionPage from "./pages/payment/FraudPreventionPage";
-import ReconciliationPage from "./pages/payment/ReconciliationPage";
-import ReportingPage from "./pages/payment/ReportingPage";
+import MultiRailPaymentsPage from "./Pages/payment/MultiRailPaymentsPage";
+import RetailManagementPage from "./Pages/payment/RetailManagementPage";
+import FraudPreventionPage from "./Pages/payment/FraudPreventionPage";
+import ReconciliationPage from "./Pages/payment/ReconciliationPage";
+import ReportingPage from "./Pages/payment/ReportingPage";
+import DashboardTransaction from "./Pages/DashboardTransaction";
 
 const router = createBrowserRouter([
   {
