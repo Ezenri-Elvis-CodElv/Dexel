@@ -3,7 +3,7 @@ import { MdCallMade } from 'react-icons/md';
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useNavigate } from 'react-router-dom';
-import { motion, AnimatePresence } from "framer-motion";
+import { motion as Motion, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
 
 const tabs = [
@@ -56,7 +56,6 @@ const tabVariants = {
 
 const Platform = () => {
   const [activeTab, setActiveTab] = useState('Availability');
-  const [prevTab, setPrevTab] = useState('Availability');
   const nav = useNavigate();
   const tabContentRef = useRef(null);
 
@@ -143,7 +142,6 @@ const Platform = () => {
               <button
                 key={tab}
                 onClick={() => {
-                  setPrevTab(activeTab);
                   setActiveTab(tab);
                 }}
                 className="relative bg-transparent border-none outline-none px-1 pb-2 text-base md:text-lg font-semibold transition-colors duration-200"
@@ -165,7 +163,7 @@ const Platform = () => {
                   }}
                 />
                 {/* Orange active underline */}
-                <motion.span
+                <Motion.span
                   layoutId="active-underline"
                   className="absolute left-0 right-0 mx-auto bottom-[-7px] h-[3px] rounded transition-all duration-300"
                   style={{
@@ -190,7 +188,7 @@ const Platform = () => {
           }}
         >
           <AnimatePresence mode="wait" initial={false}>
-            <motion.div
+            <Motion.div
               key={activeTab}
               variants={tabVariants}
               initial="initial"
@@ -200,7 +198,7 @@ const Platform = () => {
               style={{ minWidth: 0, width: "100%" }}
             >
               {/* Left Image */}
-              <motion.div
+              <Motion.div
                 className="w-full max-w-xs flex flex-col items-center flex-1"
                 initial={{ opacity: 0, x: -40, scale: 0.95 }}
                 animate={{ opacity: 1, x: 0, scale: 1 }}
@@ -212,10 +210,10 @@ const Platform = () => {
                   alt="Left visual"
                   className="w-full h-40 object-cover rounded-xl shadow"
                 />
-              </motion.div>
+              </Motion.div>
 
               {/* Center Logos */}
-              <motion.div
+              <Motion.div
                 className="flex flex-col items-center gap-3 flex-1 min-w-[80px] justify-center"
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -223,7 +221,7 @@ const Platform = () => {
                 transition={{ duration: 0.5, delay: 0.1 }}
               >
                 {centerLogos.map((logo, idx) => (
-                  <motion.div
+                  <Motion.div
                     key={idx}
                     className="text-sm font-semibold text-[#0A4747]"
                     initial={{ opacity: 0, y: 20 }}
@@ -231,12 +229,12 @@ const Platform = () => {
                     transition={{ delay: 0.1 * idx, duration: 0.4 }}
                   >
                     {logo}
-                  </motion.div>
+                  </Motion.div>
                 ))}
-              </motion.div>
+              </Motion.div>
 
               {/* Right Image */}
-              <motion.div
+              <Motion.div
                 className="w-full max-w-xs flex flex-col items-center flex-1"
                 initial={{ opacity: 0, x: 40, scale: 0.95 }}
                 animate={{ opacity: 1, x: 0, scale: 1 }}
@@ -248,8 +246,8 @@ const Platform = () => {
                   alt="Right visual"
                   className="w-full h-40 object-cover rounded-xl shadow"
                 />
-              </motion.div>
-            </motion.div>
+              </Motion.div>
+            </Motion.div>
           </AnimatePresence>
         </div>
       </div>

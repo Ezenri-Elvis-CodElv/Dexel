@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion"; // removed useAnimation
+import { motion as Motion, AnimatePresence } from "framer-motion"; // removed useAnimation
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { FaHandshake, FaLightbulb, FaUsers, FaGlobe, FaShieldAlt, FaRocket } from "react-icons/fa";
@@ -140,15 +140,15 @@ const AboutUs = () => {
 		>
 			{/* Hero Section */}
 			<section className="relative flex flex-col items-center justify-center min-h-[60vh] py-16 px-4">
-				<motion.h1
+				<Motion.h1
 					initial={{ opacity: 0, scale: 0.8 }}
 					animate={{ opacity: 1, scale: 1 }}
 					transition={{ duration: 1.2, type: "spring" }}
 					className="text-5xl md:text-7xl font-extrabold text-white drop-shadow-lg text-center mb-6"
 				>
 					About <span className="text-[#F59E42]">Gryndle</span>
-				</motion.h1>
-				<motion.p
+				</Motion.h1>
+				<Motion.p
 					initial={{ opacity: 0, y: 40 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ delay: 0.3, duration: 1.1 }}
@@ -156,9 +156,9 @@ const AboutUs = () => {
 				>
 					Empowering businesses with secure, scalable, and innovative payment
 					solutions for a borderless world.
-				</motion.p>
+				</Motion.p>
 				{/* Placeholder for company images */}
-				<motion.div
+				<Motion.div
 					initial={{ opacity: 0, scale: 0.9 }}
 					animate={{ opacity: 1, scale: 1 }}
 					transition={{ delay: 0.5, duration: 1.2 }}
@@ -171,9 +171,9 @@ const AboutUs = () => {
 					<div className="w-40 h-40 bg-white/20 rounded-2xl shadow-lg flex items-center justify-center animate-pulse">
 						<span className="text-[#F59E42] font-bold text-xl"><img src="" alt="" className="w-full h-full object-contain rounded-2xl"/></span>
 					</div>
-				</motion.div>
+				</Motion.div>
 				{/* Animated gradient line */}
-				<motion.div
+				<Motion.div
 					initial={{ width: 0 }}
 					animate={{ width: "80%" }}
 					transition={{ delay: 0.7, duration: 1.2 }}
@@ -186,7 +186,7 @@ const AboutUs = () => {
 				ref={missionRef}
 				className="relative py-16 px-4 flex flex-col md:flex-row items-center justify-center gap-10"
 			>
-				<motion.div
+				<Motion.div
 					className="flex-1"
 					initial="hidden"
 					whileInView="visible"
@@ -201,15 +201,15 @@ const AboutUs = () => {
 						and scalable solutions that empower businesses and individuals to thrive
 						in a digital-first world.
 					</p>
-					<motion.div
+					<Motion.div
 						initial={{ opacity: 0, x: -30 }}
 						whileInView={{ opacity: 1, x: 0 }}
 						transition={{ delay: 0.2, duration: 0.8 }}
 						viewport={{ once: true }}
 						className="w-24 h-2 bg-gradient-to-r from-[#F59E42] to-[#14B8A6] rounded-full mb-2"
 					/>
-				</motion.div>
-				<motion.div
+				</Motion.div>
+				<Motion.div
 					className="flex-1 flex items-center justify-center"
 					initial="hidden"
 					whileInView="visible"
@@ -218,13 +218,9 @@ const AboutUs = () => {
 				>
 					{/* Placeholder for mission image */}
 					<div className="w-64 h-64 bg-white/20 rounded-3xl shadow-xl flex items-center justify-center animate-pulse">
-						<img
-							src="/mission2.jpg"
-							alt=""
-							className="w-full h-full object-contain rounded-3xl"
-						/>
+						<span className="text-[#0A4747] font-bold text-lg"><img src="/mission2." alt="" className="w-full h-full object-contain rounded-3xl"/></span>
 					</div>
-				</motion.div>
+				</Motion.div>
 			</section>
 
 			{/* Vision Section */}
@@ -232,7 +228,7 @@ const AboutUs = () => {
 				ref={visionRef}
 				className="relative py-16 px-4 flex flex-col-reverse md:flex-row items-center justify-center gap-10"
 			>
-				<motion.div
+				<Motion.div
 					className="flex-1 flex items-center justify-center"
 					initial="hidden"
 					whileInView="visible"
@@ -243,8 +239,8 @@ const AboutUs = () => {
 					<div className="w-64 h-64 bg-white/20 rounded-3xl shadow-xl flex items-center justify-center animate-pulse">
 						<span className="text-[#F59E42] font-bold text-lg">Vision Image</span>
 					</div>
-				</motion.div>
-				<motion.div
+				</Motion.div>
+				<Motion.div
 					className="flex-1"
 					initial="hidden"
 					whileInView="visible"
@@ -258,14 +254,14 @@ const AboutUs = () => {
 						To be the global leader in digital payments, enabling frictionless
 						commerce and financial inclusion for everyone, everywhere.
 					</p>
-					<motion.div
+					<Motion.div
 						initial={{ opacity: 0, x: 30 }}
 						whileInView={{ opacity: 1, x: 0 }}
 						transition={{ delay: 0.2, duration: 0.8 }}
 						viewport={{ once: true }}
 						className="w-24 h-2 bg-gradient-to-r from-[#14B8A6] to-[#F59E42] rounded-full mb-2"
 					/>
-				</motion.div>
+				</Motion.div>
 			</section>
 
 			{/* Core Values Section */}
@@ -273,7 +269,7 @@ const AboutUs = () => {
 				ref={valuesRef}
 				className="relative py-20 px-4 flex flex-col items-center justify-center bg-white/10 backdrop-blur-lg"
 			>
-				<motion.h2
+				<Motion.h2
 					initial={{ opacity: 0, y: 40 }}
 					whileInView={{ opacity: 1, y: 0 }}
 					transition={{ duration: 1 }}
@@ -281,11 +277,11 @@ const AboutUs = () => {
 					className="text-3xl md:text-4xl font-bold text-[#0A4747] mb-10 text-center"
 				>
 					Our Core Values
-				</motion.h2>
+				</Motion.h2>
 				<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 w-full max-w-5xl">
 					<AnimatePresence>
 						{coreValues.map((value, idx) => (
-							<motion.div
+							<Motion.div
 								key={value.title}
 								className="bg-white/80 rounded-3xl shadow-xl p-8 flex flex-col items-center justify-center border border-[#14B8A6]/10 hover:scale-105 hover:shadow-2xl transition-all duration-500"
 								variants={fadeInUp}
@@ -307,12 +303,12 @@ const AboutUs = () => {
 								<p className="text-[#0A4747]/80 text-base text-center">
 									{value.desc}
 								</p>
-							</motion.div>
+							</Motion.div>
 						))}
 					</AnimatePresence>
 				</div>
 				{/* Animated underline */}
-				<motion.div
+				<Motion.div
 					initial={{ width: 0 }}
 					whileInView={{ width: "60%" }}
 					transition={{ delay: 0.3, duration: 1.2 }}
@@ -323,7 +319,7 @@ const AboutUs = () => {
 
 			{/* Call to Action Section */}
 			<section className="relative py-20 px-4 flex flex-col items-center justify-center">
-				<motion.div
+				<Motion.div
 					initial={{ opacity: 0, scale: 0.95 }}
 					whileInView={{ opacity: 1, scale: 1 }}
 					transition={{ duration: 1.1, type: "spring" }}
@@ -337,7 +333,7 @@ const AboutUs = () => {
 						Discover how Gryndle can help your business grow and thrive in a
 						digital world.
 					</p>
-					<motion.button
+					<Motion.button
 						whileHover={{
 							scale: 1.07,
 							boxShadow: "0 4px 24px #14B8A633",
@@ -352,12 +348,12 @@ const AboutUs = () => {
 						onClick={() => (window.location.href = "/contact")}
 					>
 						Contact Us
-					</motion.button>
-				</motion.div>
+					</Motion.button>
+				</Motion.div>
 			</section>
 
 			{/* Decorative animated background elements */}
-			<motion.div
+			<Motion.div
 				className="absolute top-0 left-0 w-full h-full pointer-events-none z-0"
 				initial={{ opacity: 0 }}
 				animate={{ opacity: 1 }}
@@ -365,7 +361,7 @@ const AboutUs = () => {
 			>
 				{/* Floating circles */}
 				{[...Array(8)].map((_, i) => (
-					<motion.div
+					<Motion.div
 						key={i}
 						className="absolute rounded-full bg-[#14B8A6]/20"
 						style={{
@@ -388,7 +384,7 @@ const AboutUs = () => {
 						}}
 					/>
 				))}
-			</motion.div>
+			</Motion.div>
 		</div>
 	);
 };

@@ -6,7 +6,7 @@ import { MdCallMade } from "react-icons/md";
 import { IoReceiptOutline } from "react-icons/io5";
 import Card from "../component/Card";
 import { FaAws, FaCcMastercard, FaCcVisa } from "react-icons/fa";
-import { motion } from "framer-motion";
+import { motion as Motion} from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useNavigate } from "react-router-dom";
@@ -123,14 +123,14 @@ const Landingpage = () => {
       }}
     >
       {/* Animated grid lines */}
-      <motion.div
+      <Motion.div
         className="absolute inset-0 z-0 pointer-events-none overflow-hidden"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.2 }}
       >
         {[...Array(10)].map((_, i) => (
-          <motion.div
+          <Motion.div
             key={`v-${i}`}
             className="absolute w-[2px] h-full bg-white/10 animate-moveY"
             style={{
@@ -144,7 +144,7 @@ const Landingpage = () => {
           />
         ))}
         {[...Array(10)].map((_, i) => (
-          <motion.div
+          <Motion.div
             key={`h-${i}`}
             className="absolute h-[2px] w-full bg-white/10 animate-moveX"
             style={{
@@ -157,14 +157,14 @@ const Landingpage = () => {
             transition={{ delay: i * 0.1, duration: 1 }}
           />
         ))}
-      </motion.div>
+      </Motion.div>
 
       {/* === Hero Section === */}
       <div
         className="relative w-full h-screen flex flex-col md:flex-row items-center justify-center overflow-hidden z-10"
         ref={heroRef}
       >
-        <motion.video
+        <Motion.video
           className="absolute top-0 left-0 w-full h-full object-cover z-0"
           src="/bgvideohero.mp4"
           autoPlay
@@ -176,13 +176,13 @@ const Landingpage = () => {
           transition={{ duration: 1.2 }}
         />
         <div className="relative z-10 w-full h-full bg-[#00000072] bg-opacity-80 flex flex-col md:flex-row justify-center items-center">
-          <motion.div
+          <Motion.div
             className="w-full md:w-[70%] h-auto md:h-[80%] flex px-4 md:px-7 flex-col items-start justify-center"
             initial="hidden"
             animate="visible"
             variants={fadeInUp}
           >
-            <motion.h1
+            <Motion.h1
               className="text-3xl md:text-[55px] font-[500] text-left animate__animated animate__zoomInLeft"
               style={{ color: "#fff" }}
               data-aos="fade-up"
@@ -192,8 +192,8 @@ const Landingpage = () => {
             >
               Comprehensive Payment Processing Infrastructure for{" "}
               <span style={{ color: "#F59E42" }}>{words[current]}</span>
-            </motion.h1>
-            <motion.p
+            </Motion.h1>
+            <Motion.p
               className="text-lg md:text-[25px] font-[400] text-start mt-4 pl-1 md:pl-2.5"
               style={{ color: "#F5F7FA", textShadow: "0 2px 8px #0008" }}
               data-aos="fade-up"
@@ -203,8 +203,8 @@ const Landingpage = () => {
               transition={{ delay: 0.3, duration: 1.1 }}
             >
               Innovation, security and efficiency for all payment rails, powered by AI.
-            </motion.p>
-            <motion.div
+            </Motion.p>
+            <Motion.div
               className="flex flex-col md:flex-row items-center justify-center mt-8 gap-4"
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
@@ -276,9 +276,9 @@ const Landingpage = () => {
                   <MdCallMade className="text-[#0A4747]" />
                 </span>
               </button>
-            </motion.div>
-          </motion.div>
-          <motion.div
+            </Motion.div>
+          </Motion.div>
+          <Motion.div
             className="w-full md:w-[60%] h-auto md:h-[80%] flex justify-center md:justify-end items-center mt-8 md:mt-0"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -291,7 +291,7 @@ const Landingpage = () => {
               data-aos="zoom-in-up"
               data-aos-delay="400"
             />
-          </motion.div>
+          </Motion.div>
         </div>
       </div>
 
@@ -300,7 +300,7 @@ const Landingpage = () => {
         className="w-full h-auto md:h-[80vh] bg-white flex flex-col md:flex-row items-center justify-center py-10 md:py-0"
         ref={apiRef}
       >
-        <motion.div
+        <Motion.div
           className="w-[95%] h-auto md:h-[98%]"
           initial="hidden"
           whileInView="visible"
@@ -328,7 +328,7 @@ const Landingpage = () => {
           <div className="w-full h-auto md:h-[50%] flex flex-col md:flex-row justify-around items-center gap-6 md:gap-0 mt-8 md:mt-0">
             {/* Cards */}
             {[1, 2, 3, 4].map((_, i) => (
-              <motion.div
+              <Motion.div
                 key={i}
                 className="w-[90%] md:w-[280px] h-[250px] shadow-2xl border-2 border-[#d1f0ed] rounded-2xl flex flex-col justify-center items-start pl-3 gap-2 p-2.5 transition-all duration-300 ease-in-out hover:shadow-2xl hover:scale-105 hover:-translate-y-2 mb-6 md:mb-0"
                 data-aos="fade-up"
@@ -358,14 +358,14 @@ const Landingpage = () => {
                     "Continuous support with an expert team to ensure that the operation runs without critical interruptions.",
                   ][i]}
                 </p>
-              </motion.div>
+              </Motion.div>
             ))}
           </div>
-        </motion.div>
+        </Motion.div>
       </div>
 
       {/* Card Slider Section */}
-      <motion.div
+      <Motion.div
         className="w-full h-auto md:h-[100vh] flex flex-col justify-center items-center py-10 md:py-0"
         ref={featuresRef}
         initial="hidden"
@@ -386,10 +386,10 @@ const Landingpage = () => {
         >
           <Card />
         </div>
-      </motion.div>
+      </Motion.div>
 
       {/* Tools Section */}
-      <motion.div
+      <Motion.div
         className="w-full h-auto md:h-[50vh] flex flex-col justify-center gap-10 bg-white items-start pl-4 md:pl-7 py-10 md:py-0"
         style={{
           clipPath: "polygon(0 0, 100% 10%, 100% 100%, 0% 100%)",
@@ -408,10 +408,10 @@ const Landingpage = () => {
           From e-commerce to financial services, our solutions are designed to
           fit the needs of every industry.
         </p>
-      </motion.div>
+      </Motion.div>
 
       {/* Features Section */}
-      <motion.div
+      <Motion.div
         className="w-full h-auto md:h-[100vh] flex flex-col justify-center items-center bg-white py-10 md:py-0"
         style={{
           clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 90%)",
@@ -425,7 +425,7 @@ const Landingpage = () => {
       >
         <div className="w-[98%] md:w-[90%] h-auto md:h-[60%] flex flex-col md:flex-row items-center justify-center gap-4">
           {/* Feature 1 */}
-          <motion.div
+          <Motion.div
             className="w-full md:w-[30%] h-auto md:h-full flex flex-col items-center mb-8 md:mb-0"
             data-aos="fade-right"
             initial={{ opacity: 0, x: -60 }}
@@ -447,9 +447,9 @@ const Landingpage = () => {
               Tracking of settlement payments in order to expedite the payment
               of money to merchants.
             </p>
-          </motion.div>
+          </Motion.div>
           {/* Feature 2 */}
-          <motion.div
+          <Motion.div
             className="w-full md:w-[30%] h-auto md:h-full flex flex-col items-center gap-4 mb-8 md:mb-0"
             data-aos="fade-up"
             data-aos-delay="100"
@@ -471,9 +471,9 @@ const Landingpage = () => {
             <p className="text-[14px] font-[200] text-[rgb(9,71,71)] pl-2.5 text-center md:text-left">
               Detailed information to optimize your business and prevent fraud.
             </p>
-          </motion.div>
+          </Motion.div>
           {/* Feature 3 */}
-          <motion.div
+          <Motion.div
             className="w-full md:w-[30%] h-auto md:h-full flex flex-col items-center gap-4"
             data-aos="fade-left"
             data-aos-delay="200"
@@ -496,7 +496,7 @@ const Landingpage = () => {
               Efficient chargeback solutions that minimize losses and improve
               operations.
             </p>
-          </motion.div>
+          </Motion.div>
         </div>
         <div className="w-full md:w-[90%] h-auto md:h-[30%] bg-white flex items-center justify-center mt-8 md:mt-0">
           <button
@@ -532,10 +532,10 @@ const Landingpage = () => {
             </span>
           </button>
         </div>
-      </motion.div>
+      </Motion.div>
 
       {/* Documentation Section */}
-      <motion.div
+      <Motion.div
         className="w-full h-auto md:h-[100vh] flex flex-col justify-center items-center  gap-5 py-10 md:py-0"
         data-aos="fade-up"
         initial={{ opacity: 0, y: 60 }}
@@ -581,7 +581,7 @@ const Landingpage = () => {
             <MdCallMade className="text-[#13a6a6]" />
           </span>
         </button>
-        <motion.div
+        <Motion.div
           className="w-[90%] md:w-[40%] h-auto md:h-[70%] flex items-center justify-center animate-pulse anim mt-4"
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -595,11 +595,11 @@ const Landingpage = () => {
             data-aos="zoom-in"
             data-aos-delay="300"
           />
-        </motion.div>
-      </motion.div>
+        </Motion.div>
+      </Motion.div>
 
       {/* Partners Section */}
-      <motion.div
+      <Motion.div
         className="w-[100%] h-auto md:h-[100vh] bg-[#e7ebeb]/60 flex items-center justify-center flex-col p-4 gap-2 py-10 md:py-0"
         data-aos="fade-up"
         ref={partnersRef}
@@ -613,7 +613,7 @@ const Landingpage = () => {
         </h1>
         <div className="w-[90%] h-auto md:h-[30%] flex flex-row items-center justify-center gap-7 flex-wrap">
           {/* Partner 1 */}
-          <motion.div
+          <Motion.div
             className="w-[200px] h-[80px] flex items-center justify-center rounded-xl"
             style={{ background: "#d9edd5" }}
             initial={{ opacity: 0, y: 30 }}
@@ -622,9 +622,9 @@ const Landingpage = () => {
             transition={{ delay: 0.1, duration: 0.7 }}
           >
             <img src="/Kora.svg" alt="" className="w-[70px] h-[50px] object-contain" />
-          </motion.div>
+          </Motion.div>
           {/* Partner 2 */}
-          <motion.div
+          <Motion.div
             className="w-[200px] h-[80px] flex items-center justify-center rounded-xl"
             style={{ background: "#d9edd5" }}
             initial={{ opacity: 0, y: 30 }}
@@ -633,9 +633,9 @@ const Landingpage = () => {
             transition={{ delay: 0.2, duration: 0.7 }}
           >
             <img src="/mastercard.jpg" alt="" className="w-[70px] h-[50px] object-contain rounded-lg" />
-          </motion.div>
+          </Motion.div>
           {/* Partner 3 */}
-          <motion.div
+          <Motion.div
             className="w-[200px] h-[80px] flex items-center justify-center rounded-xl"
             style={{ background: "#d9edd5" }}
             initial={{ opacity: 0, y: 30 }}
@@ -644,9 +644,9 @@ const Landingpage = () => {
             transition={{ delay: 0.3, duration: 0.7 }}
           >
             <FaAws style={{ width: "70px", height: "50px", color: "#FF9900" }} />
-          </motion.div>
+          </Motion.div>
           {/* Partner 4 */}
-          <motion.div
+          <Motion.div
             className="w-[200px] h-[80px] flex items-center justify-center rounded-xl"
             style={{ background: "#d9edd5" }}
             initial={{ opacity: 0, y: 30 }}
@@ -655,9 +655,9 @@ const Landingpage = () => {
             transition={{ delay: 0.4, duration: 0.7 }}
           >
             <FaCcVisa style={{ width: "70px", height: "50px", color: "#1A1F71" }} />
-          </motion.div>
+          </Motion.div>
         </div>
-        <motion.div
+        <Motion.div
           className="w-[90%] h-auto md:h-[70%] flex flex-row items-center justify-center shadow-2xl rounded-2xl mt-4 "
           style={{
             background: "linear-gradient(90deg, #ffffff 0%, #ffffff 100%)"
@@ -748,8 +748,8 @@ const Landingpage = () => {
               data-aos-delay="500"
             />
           </div>
-        </motion.div>
-      </motion.div>
+        </Motion.div>
+      </Motion.div>
     </div>
   );
 };
